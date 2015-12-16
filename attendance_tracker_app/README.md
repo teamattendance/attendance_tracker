@@ -27,6 +27,18 @@ After a producer signs in they will see a list of all their cohorts. When the pr
 ![](../ERD.png)
 
 ##Wireframes##
+![](wireframes/sign_in.jpg)
+![](wireframes/cohorts_page.jpg)
+![](wireframes/specific_cohort_page_one.jpg)
+![](wireframes/specific_cohort_page_two.jpg)
+![](wireframes/specific_cohort_add_specifc_day.jpg)
+![](wireframes/specific_cohort_on_specifc_day_page_one.jpg)
+![](wireframes/specific_cohort_on_specifc_day_page_two.jpg)
+![](wireframes/specific_student_page_one.jpg)
+![](wireframes/specific_student_page_two.jpg)
+
+
+
 
 
 
