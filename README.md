@@ -13,18 +13,18 @@ Once the Instructor has signed in he/she will be able to see a daily roster of t
 After a producer signs in they will see a list of all their cohorts. When the producer clicks on a cohort, they will be able to view the attendance records for each student in the class.  The students that need to be contacted due to poor attendence will be higlighted. The producer will be able to jump to specifc date and see the attendance record for the day.
 
 ##Technology##
--Ruby on Rails
--ActiveRecord
--HTML
--CSS
--JavaScript
--Heroku
--Chart.js
--Twilio
--ActionMailer
+- Ruby on Rails
+- ActiveRecord
+- HTML
+- CSS
+- JavaScript
+- Heroku
+- Chart.js
+- Twilio
+- ActionMailer
 
 ##ERD##
-!["/attendance_tracker_app/ERD.png"]
+!["attendance_tracker/attendance_tracker_app/ERD.png"]
 
 ##Wireframes##
 
