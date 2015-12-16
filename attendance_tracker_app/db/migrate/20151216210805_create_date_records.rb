@@ -1,4 +1,4 @@
-class CreateDateRecord < ActiveRecord::Migration
+class CreateDateRecords < ActiveRecord::Migration
   def change
     create_table :date_records do |t|
       t.string :attendence, default: "present"

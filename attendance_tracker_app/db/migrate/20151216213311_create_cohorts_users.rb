@@ -1,4 +1,4 @@
-class CreateJoinTable < ActiveRecord::Migration
+class CreateCohortsUsers < ActiveRecord::Migration
   def change
     create_join_table :cohorts, :users do |t|
       t.index [:cohort_id, :user_id]
