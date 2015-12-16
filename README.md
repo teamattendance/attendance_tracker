@@ -24,7 +24,9 @@ After a producer signs in they will see a list of all their cohorts. When the pr
 -ActionMailer
 
 ##ERD##
-!["/attendance_tracker/"]
+!["/attendance_tracker_app/ERD.png"]
+
+##Wireframes##
 
 
 
