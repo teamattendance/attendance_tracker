@@ -10,8 +10,21 @@ A student will be able to sign up to the service after they have been invited by
 Once the Instructor has signed in he/she will be able to see a daily roster of their classes. They will be able to mark every student as Present, Late, Unexcused Absence or Excused Absence.  An instructor may edit or view previous days' attendance records and the overall student data.  Instructors will have the ability to make new cohorts.  Once a cohort is created an e-mail will be automatically generated asking the student to sign in for the first time.  If a student has already taken a course with the school then they can use their previous information.
 
 ###Producers###
-After a producer signs in they will see a list of all their cohorts. When the producer clicks on a cohort, they will be able to view the attendance records for that class.  The students that need to be contacted due to poor attendence will be higlighted.
+After a producer signs in they will see a list of all their cohorts. When the producer clicks on a cohort, they will be able to view the attendance records for each student in the class.  The students that need to be contacted due to poor attendence will be higlighted. The producer will be able to jump to specifc date and see the attendance record for the day.
 
+##Technology##
+-Ruby on Rails
+-ActiveRecord
+-HTML
+-CSS
+-JavaScript
+-Heroku
+-Chart.js
+-Twilio
+-ActionMailer
+
+##ERD##
+!["/attendance_tracker/"]
 
 
 
