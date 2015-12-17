@@ -1,0 +1,3 @@
+for the new date record for we will have a ul that interates through its students to get li's that are form fields that we can change. Each form field will have named input fields that use squided names that include the student's id. 
+
+in controller we will cycle through the params and match them to students by id, then set the date_record.attendence to the params value
