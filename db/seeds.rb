@@ -23,12 +23,16 @@ s3 = Student.create({
 
 c1 = Cohort.create({
   cohort_name: 'sisyphus', start_date: "-2015-08-08",
-    end_date: "-2015-08-06",
-    subject: "wdi",
-    full_time: 1,
+  end_date: "-2015-08-06",
+  subject: "wdi",
+  full_time: 1,
   })
+
+d1 = DateRecord.create({day: Time.now})
 
 p1.cohorts.push(c1)
 i1.cohorts.push(c1)
 c1.users.push(s1, s2, s3)
+
+s1.date_records.push(d1)
 
