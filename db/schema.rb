@@ -34,10 +34,9 @@ ActiveRecord::Schema.define(version: 20151216213311) do
   add_index "cohorts_users", ["user_id", "cohort_id"], name: "index_cohorts_users_on_user_id_and_cohort_id", using: :btree
 
   create_table "date_records", force: :cascade do |t|
-    t.string  "attendence",  default: "present"
+    t.string  "attendence", default: "present"
     t.date    "day"
-    t.integer "students_id"
-    t.integer "cohort_id"
+    t.integer "student_id"
   end
 
   create_table "users", force: :cascade do |t|
