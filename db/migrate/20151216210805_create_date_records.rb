@@ -4,6 +4,7 @@ class CreateDateRecords < ActiveRecord::Migration
       t.string :attendence, default: "present"
       t.date :day
       t.references :students
+      t.references :cohort
     end
   end
 end

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20151216213311) do
     t.string  "attendence",  default: "present"
     t.date    "day"
     t.integer "students_id"
+    t.integer "cohort_id"
   end
 
   create_table "users", force: :cascade do |t|
