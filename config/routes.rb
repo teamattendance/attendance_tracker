@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
 
-  shallow do 
-    resources :users do
-      resources :cohorts, except: [:edit, :update]
-    end
-  end
+  root 'sessions#login'
+ 
+  resources :users , only: [:edit, :show, :update]
+  resources :students, only: [:show]
+  resources :date_records, only: [:edit, :update]
+
+    
   
   shallow do 
-    resources :cohorts, except: [:edit, :update] do
-      resources :students
+    resources :cohorts, except: [:edit, :update, :destroy, :show] do
+      resources :students, only: [:new, :create]
     end
   end
 
+
+  get 'cohorts/:id/students' => 'cohorts#show'
   get 'cohorts/:id/students/date_records/new' => 'date_records#new'
    # end
 
