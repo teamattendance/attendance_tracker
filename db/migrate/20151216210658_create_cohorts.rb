@@ -7,7 +7,6 @@ class CreateCohorts < ActiveRecord::Migration
       t.string :subject
       t.boolean :full_time
       t.integer :max_absences, default: 4
-      t.references :producer
     end
   end
 end

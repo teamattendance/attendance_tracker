@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :img_url
       t.string :bio
+
     end
   end
 end
