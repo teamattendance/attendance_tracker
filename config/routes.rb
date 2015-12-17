@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+
+  shallow do 
+    resources :users do
+      resources :cohorts, except: [:edit, :update]
+    end
+  end
+  
+  shallow do 
+    resources :cohorts, except: [:edit, :update] do
+      resources :students
+    end
+  end
+
+  get 'cohorts/:id/students/date_records/new' => 'date_records#new'
+   # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
