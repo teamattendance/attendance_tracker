@@ -24,7 +24,7 @@ After a producer signs in they will see a list of all their cohorts. When the pr
 - ActionMailer
 
 ##ERD##
-![](../ERD.png)
+![](ERD.png)
 
 ##Wireframes##
 ![](wireframes/sign_in.jpg)
