@@ -5,3 +5,9 @@ Do we have a model for users or simply for each subclass?
 LOOK AT USER MODEL
 
 do we have to add type manually
+
+form helper?
+<%= form_for(student) do |f| %>
+<% this_param = student.id.to_s %>
+<%= f.text_field this_param %>
+<%= f.submit %>
