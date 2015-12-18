@@ -8,8 +8,24 @@
 p1 = Producer.create({
   email: 'babwapple@gmail.com', password: 'test', password_confirmation: 'test', phone: "1", first_name: 'Hannah', last_name: 'Edwards', img_url: 'https://pbs.twimg.com/profile_images/574563795932082176/E8ncX11D.jpeg', bio: 'ipsum loremmmmmmm'})
 
+p2 = Producer.create({
+  email: 'producin@g.a', password: 'test', password_confirmation: 'test'
+  })
+
+p3 = Producer.create({
+  email: 'dontstopproducin@yahoo.co.uk', password: 'test', password_confirmation: 'test'
+  })
+
 i1 = Instructor.create({
   email: 'testingemailusability@gmail.com', password: 'test', password_confirmation: 'test', phone: "1", first_name: 'Spammy', last_name: 'Edwards', img_url: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Spam_can.png', bio: 'ipsum loremmmmmmm'})
+
+i2 = Instructor.create({
+  email: 'ascot@bo.i', password: 'test', password_confirmation: 'test'
+  })
+
+i3 = Instructor.create({
+  email: 'sarg@beatles.pepper', password: 'test', password_confirmation: 'test'
+  })
 
 s1 = Student.create({
   email: 'student1@test.test', password: 'test', password_confirmation: 'test', phone: "1", first_name: 'Testy1', last_name: 'Testy1' 
@@ -22,8 +38,8 @@ s3 = Student.create({
   })
 
 c1 = Cohort.create({
-  cohort_name: 'sisyphus', start_date: "-2015-08-08",
-  end_date: "-2015-08-06",
+  cohort_name: 'sisyphus', start_date: "2015-08-08",
+  end_date: "2015-08-06",
   subject: "wdi",
   full_time: 1,
   })
