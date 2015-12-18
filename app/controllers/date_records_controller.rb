@@ -9,7 +9,7 @@
     # /cohorts/:id/students/date_records/new
 
     def new
-     @students = Cohort.find(params['id']).students
+     @students = Cohort.find(params['id']).users.where(type: "Student")
 
       @students.each do |student|
         DateRecord.new()
