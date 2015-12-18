@@ -9,13 +9,12 @@
           <%= student.first_name %> <%= student.last_name %>
         </div>
         <div>
-          <select>
-            <option name=<%= student.id.to_s %> value="present">Volvo</option>
-            <option name=<%= student.id.to_s %> value="excused">Saab</option>
-            <option name=<%= student.id.to_s %> value="unexcused">Mercedes</option>
-            <option name=<%= student.id.to_s %> value="late">Audi</option>
+          <select name="<%= student.id.to_s %>" >
+            <option value="present">Present</option>
+            <option value="excused">Excused</option>
+            <option value="unexcused">Unexcused</option>
+            <option value="late">Late</option>
           </select>
-          
           <!--  -->
         </div>
       </li>

@@ -14,3 +14,4 @@ form helper?
 
 
 <input type="text" name=<%= student.id.to_s %> value = "present">
+<%= f.text_field :attendence %>
