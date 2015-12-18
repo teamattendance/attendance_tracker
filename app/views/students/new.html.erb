@@ -1,0 +1,19 @@
+<h1>Create a Student</h1>
+
+<%= form_for "/cohorts/:cohort_id/students" do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation %>
+  <%= f.label :phone %>
+  <%= f.number_field :phone %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <%= f.submit %>
+
+<% end %>
+
