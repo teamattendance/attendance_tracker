@@ -13,11 +13,10 @@
     # /cohorts/:id/students/date_records/new
 
     def new
-     @cohort = params['id']
-     @students = Cohort.find(params['id']).users.where(type: "Student")
-     @date_records = []
-      @students.each do |student|
-        @date_records.push(DateRecord.new())
+      @cohort = params[:id]
+      @students = Cohort.find(params[:id]).users.where(type: "Student")
+      @students.each do
+        DateRecord.new()
       end
     end
 
@@ -43,7 +42,7 @@
 
     # /date_records/:id/edit(.:format)
     def edit
-      @date = DateRecord.find(params['id'])
+      @date = DateRecord.find(params[:id])
     end
 
     # /date_records/:id(.:format)
