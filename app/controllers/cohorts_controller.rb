@@ -44,12 +44,12 @@ class CohortsController < ApplicationController
     @user = User.find(session[:user_id])
     @cohort = Cohort.create(cohort_params)
     @instructors = User.where(type:"Instructor")
+    @producers = User.where(type:"Producer")
     if @cohort.save
       @instructors.find(@user.id).cohorts.push(@cohort)
-      @instructors.find_by(email: params[:user_email]).cohorts.push(@cohort)
-
-      # if @instructors.find_by(email:params[:instructor_email_2]).cohorts.push(@cohort) end
-      # if @instructors.find_by(email:params[:instructor_email_3]).cohorts.push(@cohort) end
+      if @instructors.find_by(email: params[:second_instructor_email]) then @instructors.find_by(email: params[:second_instructor_email]).cohorts.push(@cohort) end
+      if @instructors.find_by(email:params[:third_instructor_email]) then @instructors.find_by(email:params[:third_instructor_email]).cohorts.push(@cohort) end 
+      if @producers.find_by(email:params[:producer_email]) then @producers.find_by(email:params[:producer_email]).cohorts.push(@cohort) end 
       flash[:notice] = "#{@cohort.cohort_name} was successfully created"
       redirect_to "/cohorts/#{@cohort.id}/students"
     else
