@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'sessions#login'
+  root 'sessions#new'
+
  
   resources :users , only: [:edit, :show, :update]
   resources :students, only: [:show]
@@ -14,7 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
-
+  post '/' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   get 'cohorts/:id/students' => 'cohorts#show'
   get 'cohorts/:id/students/date_records/new' => 'date_records#new'
    # end
