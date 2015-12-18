@@ -40,14 +40,14 @@ ActiveRecord::Schema.define(version: 20151216213311) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "type"
-    t.string  "email"
-    t.string  "password_digest"
-    t.integer "phone"
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "img_url"
-    t.string  "bio"
+    t.string "type"
+    t.string "email"
+    t.string "password_digest"
+    t.string "phone"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "img_url"
+    t.string "bio"
   end
 
 end
