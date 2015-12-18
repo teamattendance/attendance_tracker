@@ -11,4 +11,6 @@
 
   <% end %>
 </ul>
-<a href="/cohorts/new">New Cohort</a>
+<% if @user.type == "Instructor" %>
+  <a href="/cohorts/new">New Cohort</a>
+<% end %>
