@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     
   
   shallow do 
-    resources :cohorts, except: [:edit, :update, :destroy, :show] do
+    resources :cohorts, except: [:destroy, :show] do
       resources :students, only: [:new, :create]
     end
   end
