@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @cohort.cohort_name %></h1>
+<p>Start Date: <%= @cohort.start_date %></p>
+<p>End Date: <%= @cohort.end_date %></p>
+<p>Subject: <%= @cohort.subject %></p>
+<p>Full Time: <%= @cohort.full_time %></p>
+<p>Max Absences: <%= @cohort.max_absences %></p>
+</p>
+
+<h2> Producer: </h2>
+<ul>
+  <% @producers.each do |producer| %>
+    <li> <%= producer.first_name %> <%= producer.last_name %> </li>
+  <% end %>
+</ul>
+<h2> Instructors: </h2>
+<ul>
+  <% @instructors.each do |instructor|  %>
+    <li> <%= instructor.first_name %> <%= instructor.last_name %> </li>
+  <% end %>
+</ul>
+<h2> Students: </h2>
+<ul>
+  <% @students.each do |student| %>
+    <li> <%= student.first_name %> <%= student.last_name %> </li>
+  <% end %>
+</ul>
