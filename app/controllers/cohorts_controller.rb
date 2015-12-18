@@ -2,20 +2,27 @@ class CohortsController < ApplicationController
 
   #GET /cohorts
   def index
-    # @user = User.find(session[:user_id])
+    @user = User.find(session[:user_id])
     @cohorts = Cohort.all
-    # @cohorts = @user.cohorts
-    # if @cohorts.length == 1 && @user.type == "Student"
-    #   redirect_to "/students/#{session[:user_id]}"
-    # end
+    @cohorts = @user.cohorts
+    if @cohorts.length == 1 && @user.type == "Student"
+      redirect_to "/students/#{session[:user_id]}"
+    end
   end
 
   #GET /cohorts/:id/students [params :cohort_id]
   def show
+    @user = User.find(session[:user_id])
+    if @user.type == "Student"
+      redirect_to "/students/#{session[:user_id]}"
+    end
     @cohort = Cohort.find(params[:id])
     @students = @cohort.users.where(type:"Student")
     @instructors = @cohort.users.where(type:"Instructor")
     @producers = @cohort.users.where(type:"Producer")
+    # to be set in erb
+    @missed = 0
+    @lates = 0
   end
 
   #GET /cohorts/new

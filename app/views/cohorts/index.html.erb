@@ -2,7 +2,13 @@
 <h1>Here's your cohorts!</h1>
 <ul>
   <% @cohorts.each do |cohort| %>
-    <li> <a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a> </li>
+    <li> 
+      <a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a> 
+      <div>
+        <%=cohort.start_date.strftime("%b %m")%> - <%=cohort.end_date.strftime("%b %m, %Y")%>
+      </div>
+    </li>
+
   <% end %>
 </ul>
 <a href="/cohorts/new">New Cohort</a>
