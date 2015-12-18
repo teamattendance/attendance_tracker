@@ -28,11 +28,13 @@ class CohortsController < ApplicationController
     @cohort = Cohort.create(cohort_params)
     @instructors = User.where(type:"Instructor")
     if @cohort.save
-      # @instructors.find_by(email:params[:user_email]).cohorts.push(@cohort)
+      binding.pry
+      @instructors.find_by(email: params[:user_email]).cohorts.push(@cohort)
+
       # if @instructors.find_by(email:params[:instructor_email_2]).cohorts.push(@cohort) end
       # if @instructors.find_by(email:params[:instructor_email_3]).cohorts.push(@cohort) end
       flash[:notice] = "#{@cohort.cohort_name} was successfully created"
-      redirect_to "/cohorts/#{@cohort.id}/sudents"
+      redirect_to "/cohorts/#{@cohort.id}/students"
     else
       render :new
     end
