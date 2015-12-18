@@ -1,0 +1,20 @@
+<h1>New day!</h1>
+
+<ul>
+  <!-- change this path!!!!! back to /cohorts/<%= @cohort %>/students-->
+  <form action="/cohorts/<%= @cohort %>/students" method="POST">
+    <% @students.each do |student| %>
+      <!--  -->
+      <li>
+        <div>
+          <%= student.first_name %> <%= student.last_name %>
+        </div>
+        <div>
+          <input type="text" name=<%= student.id.to_s %> value = "present">
+          <!--  -->
+        </div>
+      </li>
+    <%end%>
+    <button>Submit</button>
+  </form>
+</ul>
