@@ -1,0 +1,18 @@
+<h1>New day!</h1>
+<%= form_for(@students) do |f| %>
+  <ul>
+    <% @student.each do |student| %>
+      <li>
+        <div>
+          <%= student.first_name %> <%= student.last_name %>
+        </div>
+        <div>
+        <!-- this sets the param name to the student id as symbol-->
+          <% this_param = student.id.to_sym %>
+          <%= f.text_field this_param %>
+        </div>
+      </li>
+    <%end%>
+    <%= f.submit %>
+  </ul>
+<%end%>
