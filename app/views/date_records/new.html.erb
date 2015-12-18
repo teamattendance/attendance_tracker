@@ -9,7 +9,13 @@
           <%= student.first_name %> <%= student.last_name %>
         </div>
         <div>
-          <input type="text" name=<%= student.id.to_s %> value = "present">
+          <select>
+            <option name=<%= student.id.to_s %> value="present">Volvo</option>
+            <option name=<%= student.id.to_s %> value="excused">Saab</option>
+            <option name=<%= student.id.to_s %> value="unexcused">Mercedes</option>
+            <option name=<%= student.id.to_s %> value="late">Audi</option>
+          </select>
+          
           <!--  -->
         </div>
       </li>

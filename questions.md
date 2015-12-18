@@ -11,3 +11,6 @@ form helper?
 <% this_param = student.id.to_s %>
 <%= f.text_field this_param %>
 <%= f.submit %>
+
+
+<input type="text" name=<%= student.id.to_s %> value = "present">
