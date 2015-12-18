@@ -20,7 +20,13 @@ class UsersController <ApplicationController
 	private
 		def user_params
 			type_params = @user.type.downcase
-			params.require(:user).permit(:email, :password, :password_confirmation, :phone, :first_name, :last_name, :img_url, :bio)
+			if type_params == 'student'
+				params.require(:student).permit(:email, :password, :password_confirmation, :phone, :first_name, :last_name, :img_url, :bio)
+			elsif type_params == 'producer'
+				params.require(:producer).permit(:email, :password, :password_confirmation, :phone, :first_name, :last_name, :img_url, :bio)
+			else
+			params.require(:instructor).permit(:email, :password, :password_confirmation, :phone, :first_name, :last_name, :img_url, :bio)
+			end
 		end
 
 end
