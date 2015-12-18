@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @cohort.cohort_name %></h1>
-<p>Start Date: <%= @cohort.start_date %></p>
-<p>End Date: <%= @cohort.end_date %></p>
+<p>Start Date: <%= @cohort.start_date.strftime("%b %m, %Y") %></p>
+<p>End Date: <%= @cohort.end_date.strftime("%b %m, %Y") %></p>
 <p>Subject: <%= @cohort.subject %></p>
 <p>Full Time: <%= @cohort.full_time %></p>
 <p>Max Absences: <%= @cohort.max_absences %></p>
