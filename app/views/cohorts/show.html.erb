@@ -22,6 +22,22 @@
 <h2> Students: </h2>
 <ul>
   <% @students.each do |student| %>
-    <li> <%= student.first_name %> <%= student.last_name %> </li>
+    <li>
+      <a href="/students/<%= student.id %>"> <%= student.first_name %> <%= student.last_name %></a> 
+      <div>
+        <% student.date_records.each do |record| %>
+          <%if record.attendence == "unexcused" %>
+            <% @missed = @missed+1 %>
+          <%elsif record.attendence == "late"%>
+            <% @lates = @lates+1 %>
+          <%end%>
+        <%end%>
+        <p>Missed<%=@missed%></p>
+        <p>Tardies<%=@lates%></p>
+        <%@missed = 0%>
+        <%@lates = 0%>
+      </div>
+    </li>
   <% end %>
+
 </ul>

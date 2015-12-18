@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
 	def show
 		# @student = Student.find(session[:user_id])
 		@student = Student.find(params[:id])
-		binding.pry
+
 	end
 
 	#/cohorts/:cohort_id/students/new
