@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :type
       t.string :email
       t.string :password_digest
-      t.integer :phone
+      t.string :phone
       t.string :first_name
       t.string :last_name
       t.string :img_url

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get 'cohorts/:id/students' => 'cohorts#show'
   get 'cohorts/:id/students/date_records/new' => 'date_records#new'
+  post 'cohorts/:id/students/date_records' => 'date_records#create'
    # end
 
   # The priority is based upon order of creation: first created -> highest priority.

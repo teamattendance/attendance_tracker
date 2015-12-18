@@ -1,6 +1,11 @@
-<h1>Edit a specific date record</h1>
+<p>Update <%=@date.student.first_name%> <%=@date.student.last_name%>'s Attendence Record for <%=@date.day%></p>
 
 <%= form_for(@date) do |f| %>
-  <%= f.text_field :attendence %>
+  <select  name="attendence" value ="<%=@date.attendence%>">
+    <option value="present">Present</option>
+    <option value="excused">Excused</option>
+    <option value="unexcused">Unexcused</option>
+    <option value="late">Late</option>
+  </select>
   <%= f.submit %>
 <%end%>

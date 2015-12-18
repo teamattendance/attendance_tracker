@@ -1,13 +1,11 @@
-<% if session[:id] !@student %>
-	
-	<%= f.select :attendance, ['present', 'late', 'absent'] %>
-
-<% else %>
-	<% @student.date_records.each do |record| %>
+<h1><%=@student.first_name%>'s Attendance Stats:</h1>
 	<ul>
-		<li><%= record["day"] %></li>
-		<li><%= record["attendence"] %></li>
-	<% end %>
+		<% @student.date_records.each do |record| %>
+			<li>Date: <%= record["day"] %></li>
+			<li>Attendance: <%= record["attendence"] %></li>
+			<% if @current_user.type != "Student"%> 
+			<a href = "/date_records/<%=record.id%>/edit">Edit Attendance</a>
+			<%end%>
+		<% end %>
 	</ul>
-<% end %>
 
