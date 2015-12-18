@@ -32,7 +32,7 @@ class CohortsController < ApplicationController
       # if @instructors.find_by(email:params[:instructor_email_2]).cohorts.push(@cohort) end
       # if @instructors.find_by(email:params[:instructor_email_3]).cohorts.push(@cohort) end
       flash[:notice] = "#{@cohort.cohort_name} was successfully created"
-      redirect_to "/cohorts/#{@cohort.id}/sudents"
+      redirect_to "/cohorts/#{@cohort.id}/students"
     else
       render :new
     end
