@@ -1,4 +1,4 @@
-<h1><%=@student.first_name%>'s Attendance Stats:</h1>
+<h1><%=@student.first_name%>'s Attendance Stats for Cohort :</h1>
 	<ul>
 		<% @student.date_records.each do |record| %>
 			<li>Date: <%= record["day"] %></li>
