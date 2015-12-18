@@ -1,6 +1,4 @@
-  
-
-  # edit_date_record GET   /date_records/:id/edit(.:format)                 date_records#edit
+ # edit_date_record GET   /date_records/:id/edit(.:format)                 date_records#edit
   #      date_record PATCH /date_records/:id(.:format)                      date_records#update
   #                  PUT   /date_records/:id(.:format)                      date_records#update
 
