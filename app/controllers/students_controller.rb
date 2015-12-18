@@ -20,6 +20,8 @@ class StudentsController < ApplicationController
 	#/cohorts/:cohort_id/students
 	def create
 		@student = Student.create(student_params)
+		@cohort = Cohort.find(params [:id])
+		@cohort.users.push(@student)
 		redirect_to cohort_students_path
 	end
 
