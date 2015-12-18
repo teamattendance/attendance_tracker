@@ -1,18 +1,20 @@
 <h1>New day!</h1>
-<%= form_for(@students) do |f| %>
-  <ul>
-    <% @student.each do |student| %>
+
+<ul>
+  <!-- change this path!!!!! back to /cohorts/<%= @cohort %>/students-->
+  <form action="/cohorts/<%= @cohort %>/students" method="POST">
+    <% @students.each do |student| %>
+      <!--  -->
       <li>
         <div>
           <%= student.first_name %> <%= student.last_name %>
         </div>
         <div>
-        <!-- this sets the param name to the student id as symbol-->
-          <% this_param = student.id.to_s %>
-          <%= f.text_field this_param %>
+          <input type="text" name=<%= student.id.to_s %> value = "present">
+          <!--  -->
         </div>
       </li>
     <%end%>
-    <%= f.submit %>
-  </ul>
-<%end%>
+    <button>Submit</button>
+  </form>
+</ul>
