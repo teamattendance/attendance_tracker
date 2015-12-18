@@ -44,7 +44,7 @@ class CohortsController < ApplicationController
     @cohort = Cohort.create(cohort_params)
     @instructors = User.where(type:"Instructor")
     if @cohort.save
-
+      @instructors.find(@current_user)
       @instructors.find_by(email: params[:user_email]).cohorts.push(@cohort)
 
       # if @instructors.find_by(email:params[:instructor_email_2]).cohorts.push(@cohort) end
