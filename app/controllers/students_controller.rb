@@ -3,14 +3,17 @@
 # new_cohort_student GET   /cohorts/:cohort_id/students/new(.:format)   students#new
 
 class StudentsController < ApplicationController
+	before_action :authorize
 	# /students/:id
 	def show
 		# @student = Student.find(session[:user_id])
 		@student = Student.find(params[:id])
+		binding.pry
 	end
 
 	#/cohorts/:cohort_id/students/new
 	def new
+		@cohort = Cohort.find(params[:cohort_id])
 		@student = Student.new
 	end
 
