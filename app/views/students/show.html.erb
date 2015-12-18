@@ -1,0 +1,13 @@
+<% if session[:id] !@student %>
+	
+	<%= f.select :attendance, ['present', 'late', 'absent'] %>
+
+<% else %>
+	<% @student.date_records.each do |record| %>
+	<ul>
+		<li><%= record["day"] %></li>
+		<li><%= record["attendence"] %></li>
+	<% end %>
+	</ul>
+<% end %>
+
