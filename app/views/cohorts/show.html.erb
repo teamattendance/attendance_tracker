@@ -24,7 +24,7 @@
 <ul>
   <% @students.each do |student| %>
     <li>
-      <a href="/students/<%= student.id %>?id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
+      <a href="/students/<%= student.id %>?cohort_id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
       <div>
         <% student.date_records.each do |record| %>
           <%if record.attendence == "unexcused" %>
