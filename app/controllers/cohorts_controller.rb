@@ -17,17 +17,26 @@ class CohortsController < ApplicationController
       redirect_to "/students/#{session[:user_id]}"
     end
     @cohort = Cohort.find(params[:id])
-    @students = @cohort.users.where(type:"Student")
-    @instructors = @cohort.users.where(type:"Instructor")
-    @producers = @cohort.users.where(type:"Producer")
-    # to be set in erb
-    @missed = 0
-    @lates = 0
+    if @cohort.users.include? @user
+      @students = @cohort.users.where(type:"Student")
+      @instructors = @cohort.users.where(type:"Instructor")
+      @producers = @cohort.users.where(type:"Producer")
+      # to be set in erb
+      @missed = 0
+      @lates = 0
+    else
+      redirect_to "/cohorts"
+    end
   end
 
   #GET /cohorts/new
   def new
-    @cohort = Cohort.new
+    @user = User.find(session[:user_id])
+    if @user.type == "Instructor"
+      @cohort = Cohort.new
+    else
+      redirect_to "/cohorts"
+    end
   end
 
   #POST /cohorts
@@ -35,7 +44,7 @@ class CohortsController < ApplicationController
     @cohort = Cohort.create(cohort_params)
     @instructors = User.where(type:"Instructor")
     if @cohort.save
-      binding.pry
+
       @instructors.find_by(email: params[:user_email]).cohorts.push(@cohort)
 
       # if @instructors.find_by(email:params[:instructor_email_2]).cohorts.push(@cohort) end
