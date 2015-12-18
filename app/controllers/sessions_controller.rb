@@ -1,11 +1,4 @@
 class SessionsController <ApplicationController
-	before_action :check_signed_in
-	
-	def check_signed_in
-		if session[:id]
-			redirect_to cohorts_path
-		end
-	end
 
 	def new
 	end
@@ -21,7 +14,6 @@ class SessionsController <ApplicationController
 			flash[:notice] = "Incorrect e-mail and/or password. Please try again."
 			render :new
 		end
-		binding.pry
 	end
 
 	#/logout
