@@ -8,19 +8,28 @@ class StudentsController < ApplicationController
 	def show
 		# @student = Student.find(session[:user_id])
 		@student = Student.find(params[:id])
-		binding.pry
 	end
 
 	#/cohorts/:cohort_id/students/new
 	def new
-		@cohort = Cohort.find(params[:cohort_id])
-		@student = Student.new
+		if @current_user.type != "Instructor"
+			redirect_to cohorts_path
+		else
+			@cohort = Cohort.find(params[:cohort_id])
+			@student = Student.new
+		end
 	end
 
 	#/cohorts/:cohort_id/students
 	def create
-		@student = Student.create(student_params)
-		@cohort = Cohort.find(params [:id])
+		students = Student.all
+		email_array = students.map {|student| student.email}
+		if email_array.include? params['student'][:email]
+			@student = Student.find_by(email: params['student'][:email])
+		else
+			@student = Student.create(student_params)
+		end
+		@cohort = Cohort.find(params[:cohort_id])
 		@cohort.users.push(@student)
 		redirect_to cohort_students_path
 	end
