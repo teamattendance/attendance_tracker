@@ -2,7 +2,7 @@
   <% if @current_user.type != "Student"%> 
     <a href="/cohorts/<%=params[:cohort_id]%>/students"><%=Cohort.find(params[:cohort_id]).cohort_name%></a>
   <%else%>
-    <%=Cohort.find(params[:cohort_id]).cohort_name%>
+    <%=User.find(@student.id).cohorts.first.cohort_name%>
   <%end%>
   :
 </h1>
