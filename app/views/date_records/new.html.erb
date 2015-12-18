@@ -1,8 +1,7 @@
 <h1>New day!</h1>
 
 <ul>
-  <!-- change this path!!!!! back to /cohorts/<%= @cohort %>/students-->
-  <form action="/cohorts/<%= @cohort %>/students" method="POST">
+  <%= form_tag("/cohorts/#{@cohort}/students/date_records", method: :post) do %>
     <% @students.each do |student| %>
       <!--  -->
       <li>
@@ -16,5 +15,5 @@
       </li>
     <%end%>
     <button>Submit</button>
-  </form>
+  <%end%>
 </ul>
