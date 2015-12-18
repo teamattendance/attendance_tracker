@@ -1,0 +1,12 @@
+<h1><%=@user.first_name%> <%=@user.last_name%>'s Profile</h1>
+<h3>Bio:</h3>
+<p><%=@user.bio%></p>
+<h4>Phone Number: <%=@user.phone%><h4>
+<h4>E-mail: <%=@user.email%></h4>
+<img src="<%=@user.img_url%>">
+
+<%if @current_user.id == @user.id%>
+<a href="<%=@user.id%>/edit">Edit My Profile</a>
+<%end%>
+
+

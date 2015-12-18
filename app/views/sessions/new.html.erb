@@ -1,0 +1,11 @@
+<h1>Log In</h1>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_for "/" do |f| %>
+	<%=f.label :email%>
+	<%=f.text_field :email%>
+	<%=f.label :password%>
+	<%=f.password_field :password%>
+	<%=f.submit "Sign In"%>
+<%end%>
