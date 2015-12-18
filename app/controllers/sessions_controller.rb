@@ -1,10 +1,16 @@
 class SessionsController <ApplicationController
+	before_action :check_signed_in
+	
+	def check_signed_in
+		if session[:id]
+			redirect_to cohorts_path
+		end
+	end
 
-	#/login
 	def new
 	end
 
-	#/login
+	#/
 	def create
 		user = User.find_by({email: params['/'][:email]})
 		if user && user.authenticate(params['/'][:password])
@@ -15,6 +21,7 @@ class SessionsController <ApplicationController
 			flash[:notice] = "Incorrect e-mail and/or password. Please try again."
 			render :new
 		end
+		binding.pry
 	end
 
 	#/logout
