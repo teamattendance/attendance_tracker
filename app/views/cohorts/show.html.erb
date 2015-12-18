@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @cohort.cohort_name %></h1>
-<p>Start Date: <%= @cohort.start_date %></p>
-<p>End Date: <%= @cohort.end_date %></p>
+<p>Start Date: <%= @cohort.start_date.strftime("%b %m, %Y") %></p>
+<p>End Date: <%= @cohort.end_date.strftime("%b %m, %Y") %></p>
 <p>Subject: <%= @cohort.subject %></p>
 <p>Full Time: <%= @cohort.full_time %></p>
 <p>Max Absences: <%= @cohort.max_absences %></p>
@@ -22,6 +22,22 @@
 <h2> Students: </h2>
 <ul>
   <% @students.each do |student| %>
-    <li> <%= student.first_name %> <%= student.last_name %> </li>
+    <li>
+      <a href="/students/<%= student.id %>"> <%= student.first_name %> <%= student.last_name %></a> 
+      <div>
+        <% student.date_records.each do |record| %>
+          <%if record.attendence == "unexcused" %>
+            <% @missed = @missed+1 %>
+          <%elsif record.attendence == "late"%>
+            <% @lates = @lates+1 %>
+          <%end%>
+        <%end%>
+        <p>Missed<%=@missed%></p>
+        <p>Tardies<%=@lates%></p>
+        <%@missed = 0%>
+        <%@lates = 0%>
+      </div>
+    </li>
   <% end %>
+
 </ul>
