@@ -5,6 +5,7 @@
 <p>Subject: <%= @cohort.subject %></p>
 <p>Full Time: <%= @cohort.full_time %></p>
 <p>Max Absences: <%= @cohort.max_absences %></p>
+<button><a href="/cohorts/<%=@cohort.id%>/edit">Edit</a></button>
 </p>
 
 <h2> Producer: </h2>
@@ -23,7 +24,7 @@
 <ul>
   <% @students.each do |student| %>
     <li>
-      <a href="/students/<%= student.id %>"> <%= student.first_name %> <%= student.last_name %></a> 
+      <a href="/students/<%= student.id %>?id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
       <div>
         <% student.date_records.each do |record| %>
           <%if record.attendence == "unexcused" %>
