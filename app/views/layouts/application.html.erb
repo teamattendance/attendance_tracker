@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<% if @user%> 
+		<div class ="container">
+			<ul class ="navbar">
+				<li><%= @user.first_name %> <%= @user.last_name %></li>
+				binding.pry
+				<li><%= link_to "Cohorts", cohorts_path %></li>
+				<li><%= link_to "Edit Profile", edit_user_path %></li>
+				<li><%= link_to "Log Out", logout_path %></li>
+			</ul>
+		</div>
+		<%end%>
+	</header>
 
 <%= yield %>
 
