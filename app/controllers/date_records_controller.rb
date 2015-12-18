@@ -53,7 +53,7 @@
       # update the date with the params from the form
       date.update({attendence: params[:attendence]})
       # go back to student's show page
-      redirect_to '/students/#{@date.student.id}'
+      redirect_to "/students/#{date.student.id}"
     end
 
   end
