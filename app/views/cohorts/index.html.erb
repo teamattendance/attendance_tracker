@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h1>Here's your cohorts!</h1>
+<ul>
+  <% @cohorts.each do |cohort| %>
+    <li> <a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a> </li>
+  <% end %>
+</ul>
+<a href="/cohorts/new">New Cohort</a>
