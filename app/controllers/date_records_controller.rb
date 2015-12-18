@@ -19,36 +19,41 @@
     end
 
     # POST
-
     def create
       # this goes through all the params we were passed, each named as the student's id and with the value of present, absent, late
-      params.each do |id_param|
+      params.each do |key, value|
+        
         # make this id into an integer
-        id = id_param.to_i
-        # find this student
-        student = Student.find(id)
-        # this is the input value of the param
-        presence = id_param.val()
-        # create a date record 
-        this_record = DateRecord.create({attendence: presence, day: Time.now})
-        # then assign it to this student
-        student.date_records.push(this_record)
+        id = key.to_i
+        if id != 0
+          # find this student
+          student = Student.find(id)
+          # this is the input value of the param
+          presence = value
+          # create a date record 
+          this_record = DateRecord.create({attendence: presence, day: Time.now})
+          # then assign it to this student
+          student.date_records.push(this_record)
+        end
       end
-      redirect_to '/cohorts/#{params[:id]}/students'
+      redirect_to "/cohorts/#{params[:id]}/students"
       # so this should have gone through each param/student and made the correct date_record for them
     end
 
     # /date_records/:id/edit(.:format)
     def edit
+      # locate the date_record we're editing
       @date = DateRecord.find(params[:id])
     end
 
     # /date_records/:id(.:format)
     def update
+      # take the params from path id to find date
       date = DateRecord.find(params[:id])
+      # update the date with the params from the form
       date.update({attendence: params[:attendence]})
-
-      redirect_to '/students/#{@date.student.id}'
+      # go back to student's show page
+      redirect_to "/students/#{date.student.id}"
     end
 
   end

@@ -1,8 +1,7 @@
 <h1>New day!</h1>
 
 <ul>
-  <!-- change this path!!!!! back to /cohorts/<%= @cohort %>/students-->
-  <form action="/cohorts/<%= @cohort %>/students" method="POST">
+  <%= form_tag("/cohorts/#{@cohort}/students/date_records", method: :post) do %>
     <% @students.each do |student| %>
       <!--  -->
       <li>
@@ -10,11 +9,16 @@
           <%= student.first_name %> <%= student.last_name %>
         </div>
         <div>
-          <input type="text" name=<%= student.id.to_s %> value = "present">
+          <select name="<%= student.id.to_s %>" >
+            <option value="present">Present</option>
+            <option value="excused">Excused</option>
+            <option value="unexcused">Unexcused</option>
+            <option value="late">Late</option>
+          </select>
           <!--  -->
         </div>
       </li>
     <%end%>
     <button>Submit</button>
-  </form>
+  <%end%>
 </ul>
