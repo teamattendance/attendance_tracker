@@ -1,10 +1,12 @@
 class SessionsController <ApplicationController
 
-	#/login
 	def new
+		if session[:user_id]
+			redirect_to cohorts_path
+		end
 	end
 
-	#/login
+	#/
 	def create
 		user = User.find_by({email: params['/'][:email]})
 		if user && user.authenticate(params['/'][:password])
