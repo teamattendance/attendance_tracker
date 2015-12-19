@@ -58,4 +58,10 @@
       redirect_to "/students/#{date.student.id}?cohort_id=#{cohort_id}"
     end
 
+    # /date_records?cohort_id=
+    def index
+      @cohort = params[:cohort_id]
+
+    end
+
   end
