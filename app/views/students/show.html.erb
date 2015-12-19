@@ -21,6 +21,8 @@
     <!-- changes missed and lates into a common variable  -->
     <%@missed = @missed*4 +@lates%>
     <%if @missed >= 16 %>
-      ! Contact your producer!!!
+      <p>! Contact your producer!!!</p>
+      <!-- add API -->
+      <a href="/"> <%= Cohort.find(params[:cohort_id]).users.where(type: "Producer").first.email%> </a>
     <%end%>
 	</ul>
