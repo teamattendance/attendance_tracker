@@ -47,8 +47,21 @@ c1 = Cohort.create({
 days1 = [
   {day: "2015-08-08"},
   {day: "2015-08-09"},
-  {day: "2015-08-10"},
+  {day: "2015-08-10", attendence: "unexcused"},
   {day: "2015-08-11"}
+]
+
+days2 = [
+  {day: "2015-08-08", attendence: "unexcused"},
+  {day: "2015-08-09"},
+  {day: "2015-08-10", attendence: "late"},
+  {day: "2015-08-11"}
+]
+days3 = [
+  {day: "2015-08-08"},
+  {day: "2015-08-09"},
+  {day: "2015-08-10", attendence: "late"},
+  {day: "2015-08-11", attendence: "unexcused"}
 ]
 
 p1.cohorts.push(c1)
@@ -57,7 +70,15 @@ c1.users.push(s1, s2, s3)
 
 days1.each do |day|
   d = DateRecord.create(day)
-  s3.date_records.push(d)
+  s1.date_records.push(d)
 end
 
+days2.each do |day|
+  d = DateRecord.create(day)
+  s2.date_records.push(d)
+end
 
+days3.each do |day|
+  d = DateRecord.create(day)
+  s3.date_records.push(d)
+end
