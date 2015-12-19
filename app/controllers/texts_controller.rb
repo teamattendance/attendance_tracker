@@ -11,13 +11,12 @@ class TextsController <ApplicationController
 	end
 
 	def new
+		@user = User.find(params[:student_id])
 	end
 
 	def create
-		number_to_send_to = params[:phone]
-
-		account_sid = "AC8ca0e36158a0c1795cb1207c5dace357"
-		auth_token = "7f7c60129aa2503c14e14a2681226705"
+		account_sid = ENV['TWILIO_ACCT_SID']
+		auth_token = ENV['TWILIO_AUTH_TOKEN']
 		client = Twilio::REST::Client.new account_sid, auth_token
 
 		from = "+14125153260"
