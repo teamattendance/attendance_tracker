@@ -36,8 +36,21 @@
             <%end%>
           <%end%>
         <%end%>
-        <p>Missed<%=@missed%></p>
-        <p>Tardies<%=@lates%></p>
+        <p>
+          <%if @missed >= 4%>
+            !Contact!
+          <%elsif @missed >= 3 && @lates >= 4 %>
+            !Contact!
+          <%elsif @missed >= 2 && @lates >= 8 %>
+            !Contact!
+          <%elsif @missed >= 1 && @lates >= 12 %>
+            !Contact!
+          <%elsif @missed >= 0 && @lates >= 16 %>
+            !Contact!
+          <%end%>
+          Missed: <%=@missed%>
+        </p>
+        <p>Tardies: <%=@lates%></p>
         <%@missed = 0%>
         <%@lates = 0%>
       </div>
