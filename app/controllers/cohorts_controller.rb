@@ -24,6 +24,7 @@ class CohortsController < ApplicationController
       # to be set in erb
       @missed = 0
       @lates = 0
+      binding.pry
     else
       redirect_to "/cohorts"
     end
