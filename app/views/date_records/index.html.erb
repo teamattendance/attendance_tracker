@@ -1,26 +1,14 @@
+<h1>Attendence Record for Cohort 
+  <a href="/cohorts/<%=@cohort.id%>/students"><%=@cohort.cohort_name%></a>
+  on <%=params[:date]%></h1>
 <ul>
   <% @students.each do |student| %>
     <li>
       <a href="/students/<%= student.id %>?cohort_id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
       <div>
-        <p><% student.date_records%></p>
-        <% student.date_records.each do |record| %>
-          <% if record.day >= @cohort.start_date && record.day <= @cohort.end_date  %>
-            <%if record.attendence == "unexcused" %>
-              <% @missed = @missed+1 %>
-            <%elsif record.attendence == "late"%>
-              <% @lates = @lates+1 %>
-            <%end%>
-          <%end%>
-        <%end%>
-        <p>Missed<%=@missed%></p>
-        <p>Tardies<%=@lates%></p>
-        <%@missed = @missed*4 +@lates%>
-        <%if @missed >= 16 %>
-          <p>! Contact!!!</p>
-        <%end%>
-        <%@missed = 0%>
-        <%@lates = 0%>
+        <div>
+          <p><%= student.date_records.where(day: params[:date]).first.attendence %></p>
+        </div>
       </div>
     </li>
   <% end %>
