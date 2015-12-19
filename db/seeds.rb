@@ -39,16 +39,25 @@ s3 = Student.create({
 
 c1 = Cohort.create({
   cohort_name: 'sisyphus', start_date: "2015-08-08",
-  end_date: "2015-08-06",
+  end_date: "2015-08-11",
   subject: "wdi",
   full_time: 1,
   })
 
-d1 = DateRecord.create({day: Time.now})
+days1 = [
+  {day: "2015-08-08"},
+  {day: "2015-08-09"},
+  {day: "2015-08-10"},
+  {day: "2015-08-11"}
+]
 
 p1.cohorts.push(c1)
 i1.cohorts.push(c1)
 c1.users.push(s1, s2, s3)
 
-s1.date_records.push(d1)
+days1.each do |day|
+  d = DateRecord.create(day)
+  s3.date_records.push(d)
+end
+
 
