@@ -8,10 +8,24 @@
 </h1>
 	<ul>
 		<% @student.date_records.each do |record| %>
-			<li>Date: <%= record["day"] %></li>
-			<li>Attendance: <%= record["attendence"] %></li>
-			<% if @current_user.type != "Student"%> 
-			<a href = "/date_records/<%=record.id%>/edit">Edit Attendance</a>
-			<%end%>
+			<% if record.day >= Cohort.find(params[:cohort_id]).start_date && record.day <= Cohort.find(params[:cohort_id]).end_date  %>
+        <li>
+          <div>Date: <%= record["day"] %></div>
+  			  <div>Attendance: <%= record["attendence"] %></div>
+    			<% if @current_user.type == "Instructor"%> 
+    			 <a href = "/date_records/<%=record.id%>/edit">Edit Attendance</a>
+    			<%end%>
+        </li>
+      <%end%>
 		<% end %>
+    <!-- changes missed and lates into a common variable  -->
+    <%@missed = @missed*4 +@lates%>
+    <%if @missed >= 16 %>
+      <p>! Contact!!!</p>
+      <!-- add API -->
+      <% if @current_user.type == "Student"%>
+        <p> Your producer:</p>
+        <a href="/"> <%= Cohort.find(params[:cohort_id]).users.where(type: "Producer").first.email%> </a>
+      <%end%>
+    <%end%>
 	</ul>

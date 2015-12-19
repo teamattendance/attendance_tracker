@@ -52,8 +52,16 @@
       date = DateRecord.find(params[:id])
       # update the date with the params from the form
       date.update({attendence: params[:attendence]})
+      student_id = date.student
+      cohort_id =  User.find(student_id).cohorts.first.id
       # go back to student's show page
-      redirect_to "/students/#{date.student.id}"
+      redirect_to "/students/#{date.student.id}?cohort_id=#{cohort_id}"
+    end
+
+    # /date_records?cohort_id=
+    def index
+      @cohort = params[:cohort_id]
+
     end
 
   end

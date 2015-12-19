@@ -8,6 +8,18 @@ class StudentsController < ApplicationController
 	def show
 		# @student = Student.find(session[:user_id])
 		@student = Student.find(params[:id])
+		cohort = Cohort.find(params[:cohort_id])
+		@missed = 0
+    @lates = 0
+    @student.date_records.each do |record| 
+    if record.day >= cohort.start_date && record.day <= cohort.end_date  
+    	if record.attendence == "unexcused" 
+       @missed = @missed+1 
+     elsif record.attendence == "late"
+       @lates = @lates+1 
+     end
+    end
+  end
 	end
 
 	#/cohorts/:cohort_id/students/new
