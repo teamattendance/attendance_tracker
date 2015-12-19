@@ -1,0 +1,5 @@
+<h1>Send Text Form</h1>
+
+<%form_tag ("/texts", method: "post") do %>
+	<%= label_field "Phone Number"%>
+	<%=text_field :phone_num%>
