@@ -49,7 +49,7 @@
   <% end %>
 </ul>
 <h3>See date record from a specific day</h3>
-<form method="GET" action="/">
+<form method="GET" action="/cohorts/<%=@cohort.id%>/date_records">
 <input type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>">
 <input type="submit">
 </form> 
