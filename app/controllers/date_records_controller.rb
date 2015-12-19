@@ -58,10 +58,10 @@
       redirect_to "/students/#{date.student.id}?cohort_id=#{cohort_id}"
     end
 
-    # /date_records?cohort_id=
+    # cohorts/:id/date_records
     def index
-      @cohort = params[:cohort_id]
-
+      @cohort = Cohort.find(1)
+      @students = @cohort.users.where(type: "Student")
     end
 
   end
