@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   shallow do 
     resources :cohorts, except: [:destroy, :show] do
       resources :students, only: [:new, :create]
+      resources :date_records, only: [:index] 
     end
   end
 
