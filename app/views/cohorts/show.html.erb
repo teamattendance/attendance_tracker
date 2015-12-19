@@ -36,8 +36,12 @@
             <%end%>
           <%end%>
         <%end%>
-        <p>Missed<%=@missed%></p>
-        <p>Tardies<%=@lates%></p>
+        <%@missed = @missed*4 +@lates%>
+        <%if @missed >= 16 %>
+          <p>! Contact !!!</p>
+        <%end%>
+        <p>Missed: <%=@missed%> </p>
+        <p>Tardies: <%=@lates%></p>
         <%@missed = 0%>
         <%@lates = 0%>
       </div>
