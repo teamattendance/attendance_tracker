@@ -15,3 +15,6 @@ form helper?
 
 <input type="text" name=<%= student.id.to_s %> value = "present">
 <%= f.text_field :attendence %>
+
+      <% if record.day > Cohort.find(params[:cohort_id]).start_date && record.day < Cohort.find(params[:cohort_id]).end_date  %>
+<%end%>
