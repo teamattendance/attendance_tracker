@@ -6,7 +6,7 @@ class CohortsController < ApplicationController
     @cohorts = Cohort.all
     @cohorts = @user.cohorts
     if @cohorts.length == 1 && @user.type == "Student"
-      redirect_to "/students/#{session[:user_id]}"
+      redirect_to "/students/#{session[:user_id]}?cohort_id=#{@user.cohorts.first.id}"
     end
   end
 
@@ -14,7 +14,7 @@ class CohortsController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     if @user.type == "Student"
-      redirect_to "/students/#{session[:user_id]}"
+      redirect_to "/students/#{session[:user_id]}?cohort_id=#{params[:id]}"
     end
     @cohort = Cohort.find(params[:id])
     if @cohort.users.include? @user
@@ -62,7 +62,7 @@ class CohortsController < ApplicationController
     @user = User.find(session[:user_id])
     @cohort = Cohort.find(params[:id])
     if @user.type == "Student"
-      redirect_to "/students/#{session[:user_id]}"
+      redirect_to "/students/#{session[:user_id]}?cohort_id=#{params[:id]}"
     end
     if @cohort.users.include? @user
       @students = @cohort.users.where(type:"Student")
