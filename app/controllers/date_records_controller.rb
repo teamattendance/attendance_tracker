@@ -3,8 +3,7 @@
   #                  PUT   /date_records/:id(.:format)                      date_records#update
 
   class DateRecordsController < ApplicationController
-
-    # before_action :authorize
+    before_action :authorize
 
     # GET
     # Path:
