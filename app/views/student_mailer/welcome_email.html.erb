@@ -1,1 +1,10 @@
-<h1>Hi</h1>
+<h1>Hello <%=@user.first_name%></h1>
+<p>You have signed up for <%=@cohort.cohort_name%>.</p>
+<%if @password%>
+	<p>Please sign in using the following login information:</p>
+	<p>Email: <%=@user.email%></p>
+	<p>Password: <%=@password%></p>
+<%else%>
+	<p>Please use your previous login information to view your cohort roster.</p>
+<%end%>
+<p>We look forward to seeing you in class</p>
