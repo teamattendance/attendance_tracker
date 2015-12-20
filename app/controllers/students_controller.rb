@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
 	before_action :authorize
 	# /students/:id
 	def show
+		@user = User.find(session[:user_id])
 		# @student = Student.find(session[:user_id])
 		@student = Student.find(params[:id])
 		cohort = Cohort.find(params[:cohort_id])
@@ -24,6 +25,7 @@ class StudentsController < ApplicationController
 
 	#/cohorts/:cohort_id/students/new
 	def new
+		@user = User.find(session[:user_id])
 		if @current_user.type != "Instructor"
 			redirect_to cohorts_path
 		else

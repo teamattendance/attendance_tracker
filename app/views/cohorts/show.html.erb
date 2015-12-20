@@ -56,7 +56,7 @@
 <% if @user.type == "Instructor" %>
   <h3>Create new date record</h3>
   <form method="GET" action="/cohorts/<%=params[:id]%>/students/date_records/new">
-  <input type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>">
+  <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>">
   <input type="submit">
   </form> 
 <% end %>

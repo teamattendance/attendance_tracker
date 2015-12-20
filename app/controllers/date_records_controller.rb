@@ -10,11 +10,20 @@
     # /cohorts/:id/students/date_records/new
 
     def new
-      @cohort = params[:id]
+      @user = User.find(session[:user_id]) 
+      @cohort_id = params[:id]
       @students = Cohort.find(params[:id]).users.where(type: "Student")
-      @students.each do
-        DateRecord.new()
+      @students.first.date_records.each do |this_date_record|
+        if this_date_record.day == params[:date].to_date
+          redirect_to "/cohorts/#{@cohort_id}/students"
+          # add notice? that date record exists
+        else
+          @students.each do
+            DateRecord.new()
+          end
+        end
       end
+
     end
 
     # POST
@@ -41,6 +50,7 @@
 
     # /date_records/:id/edit(.:format)
     def edit
+      @user = User.find(session[:user_id])
       # locate the date_record we're editing
       @date = DateRecord.find(params[:id])
     end
@@ -59,6 +69,7 @@
 
     # cohorts/:id/date_records
     def index
+      @user = User.find(session[:user_id])
       @cohort = Cohort.find(1)
       @students = @cohort.users.where(type: "Student")
     end
