@@ -39,7 +39,7 @@
         <p>Missed<%=@missed%></p>
         <p>Tardies<%=@lates%></p>
         <%@missed = @missed*4 +@lates%>  
-        <%if @missed >= 4*@cohort.max_absences%>
+        <%if @missed >= 4*(@cohort.max_absences-1)%>
           <a href="/students/<%=student.id%>/texts/new?cohort_id=<%=@cohort.id%>">Send Text</a>
         <%end%>
         <%@missed = 0%>
