@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
-<h1>Here's your cohorts!</h1>
+<h1>These are your cohorts</h1>
 <ul>
   <% @cohorts.each do |cohort| %>
-    <li> <a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a> </li>
+    <li> 
+      <a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a> 
+      <div>
+        <%=cohort.start_date.strftime("%b %m")%> - <%=cohort.end_date%>
+      </div>
+    </li>
+
   <% end %>
 </ul>
-<a href="/cohorts/new">New Cohort</a>
+<% if @user.type == "Instructor" %>
+  <a href="/cohorts/new">New Cohort</a>
+<% end %>

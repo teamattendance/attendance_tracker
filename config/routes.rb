@@ -4,14 +4,22 @@ Rails.application.routes.draw do
 
  
   resources :users , only: [:edit, :show, :update]
-  resources :students, only: [:show]
   resources :date_records, only: [:edit, :update]
+ 
 
-    
+  shallow do
+    resources :students, only: [:show] do
+       resources :texts, only: [:index,:new,:create]
+    end
+  end
+
+
   
+
   shallow do 
-    resources :cohorts, except: [:edit, :update, :destroy, :show] do
+    resources :cohorts, except: [:destroy, :show] do
       resources :students, only: [:new, :create]
+      resources :date_records, only: [:index] 
     end
   end
 
