@@ -1,5 +1,5 @@
 class CohortsController < ApplicationController
-
+  before_action :authorize
   #GET /cohorts
   def index
     @user = User.find(session[:user_id])
