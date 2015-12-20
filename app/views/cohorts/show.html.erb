@@ -39,7 +39,7 @@
         <p>Missed<%=@missed%></p>
         <p>Tardies<%=@lates%></p>
         <%@missed = @missed*4 +@lates%>  
-        <%if @missed >= 16 %>
+        <%if @missed >= 12 %>
           <a href="/students/<%=student.id%>/texts/new">Send Text</a>
         <%end%>
         <%@missed = 0%>
