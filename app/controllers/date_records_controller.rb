@@ -13,7 +13,7 @@
       @user = User.find(session[:user_id]) 
       @cohort_id = params[:id]
       @students = Cohort.find(params[:id]).users.where(type: "Student")
-      @students.first.date_records.each do |this_date_record|
+      @students.last.date_records.each do |this_date_record|
         if this_date_record.day == params[:date].to_date
           redirect_to "/cohorts/#{@cohort_id}/students"
           # add notice? that date record exists
@@ -30,7 +30,6 @@
     def create
       # this goes through all the params we were passed, each named as the student's id and with the value of present, absent, late
       params.each do |key, value|
-        
         # make this id into an integer
         id = key.to_i
         if id != 0
@@ -39,7 +38,7 @@
           # this is the input value of the param
           presence = value
           # create a date record 
-          this_record = DateRecord.create({attendence: presence, day: Time.now})
+          this_record = DateRecord.create({attendence: presence, day: params[:date]})
           # then assign it to this student
           student.date_records.push(this_record)
         end
