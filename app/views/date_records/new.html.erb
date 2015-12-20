@@ -1,7 +1,12 @@
-<h1>New day!</h1>
+<h1>New day <%=params[:date]%></h1>
+
+<p><%=@students.first.date_records.first.day%></p>
+<p><%=@students.first.date_records.second.day%></p>
+<p><%=@students.first.date_records.third.day%></p>
+<p><%=@students.first.date_records.fourth.day%></p>
 
 <ul>
-  <%= form_tag("/cohorts/#{@cohort}/students/date_records", method: :post) do %>
+  <%= form_tag("/cohorts/#{@cohort_id}/students/date_records", method: :post) do %>
     <% @students.each do |student| %>
       <!--  -->
       <li>
