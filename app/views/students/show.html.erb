@@ -20,7 +20,7 @@
 		<% end %>
     <!-- changes missed and lates into a common variable  -->
     <%@missed = @missed*4 +@lates%>
-    <%if @missed >= 12 %>
+    <%if @missed >= Cohort.find(params[:cohort_id]).max_absences * 4%>
       <p>! Contact!!!</p>
       <!-- add API -->
       <% if @current_user.type == "Student"%>
