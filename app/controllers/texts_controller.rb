@@ -13,6 +13,7 @@ class TextsController <ApplicationController
 
 	def new
 		@user = User.find(params[:student_id])
+		@absences = Cohort.find(params[:cohort_id]).max_absences-1
 	end
 
 	def create
