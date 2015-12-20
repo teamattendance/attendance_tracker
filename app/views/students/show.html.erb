@@ -20,7 +20,7 @@
 		<% end %>
     <!-- changes missed and lates into a common variable  -->
     <%@missed = @missed*4 +@lates%>
-    <%if @missed >= 16 %>
+    <%if @missed >= 12 %>
       <p>! Contact!!!</p>
       <!-- add API -->
       <% if @current_user.type == "Student"%>
