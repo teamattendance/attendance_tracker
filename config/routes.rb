@@ -5,7 +5,7 @@ Rails.application.routes.draw do
  
   resources :users , only: [:edit, :show, :update]
   resources :date_records, only: [:edit, :update]
-  resources :texts, only: [:index]
+  # resources :texts, only: [:index]
  
 
   shallow do
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'cohorts/:id/students' => 'cohorts#show'
   get 'cohorts/:id/students/date_records/new' => 'date_records#new'
   post 'cohorts/:id/students/date_records' => 'date_records#create'
+  post '/texts' => 'texts#index'
    # end
 
   # The priority is based upon order of creation: first created -> highest priority.
