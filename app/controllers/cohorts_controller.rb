@@ -47,9 +47,9 @@ class CohortsController < ApplicationController
         # goes through each of this student's date records, index should match the index for this day in @clean_days
         student.date_records.each_with_index do |record, index|
           if record.attendence == "late"
-            @lates_per_day[index] = @lates_per_day[index] + 1
+            @lates_per_day[index] = @lates_per_day[index] 
           elsif record.attendence == "unexcused"
-            @missed_per_day[index] = @missed_per_day[index] + 1
+            @missed_per_day[index] = @missed_per_day[index] 
           end
         end
       end
