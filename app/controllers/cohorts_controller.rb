@@ -22,6 +22,8 @@ class CohortsController < ApplicationController
       @instructors = @cohort.users.where(type:"Instructor")
       @producers = @cohort.users.where(type:"Producer")
       # to be set in erb
+      @total_missed = 0
+      @total_lates = 0
       @missed = 0
       @lates = 0
     else

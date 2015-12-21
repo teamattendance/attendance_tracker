@@ -15,7 +15,7 @@
       @students = Cohort.find(params[:id]).users.where(type: "Student")
       @students.last.date_records.each do |this_date_record|
         if this_date_record.day == params[:date].to_date
-          redirect_to "/cohorts/#{@cohort_id}/students"
+          redirect_to "/cohorts/#{@cohort_id}/date_records?date=#{params[:date]}"
           # add notice? that date record exists
         else
           @students.each do
@@ -23,7 +23,6 @@
           end
         end
       end
-
     end
 
     # POST
@@ -69,7 +68,7 @@
     # cohorts/:id/date_records
     def index
       @user = User.find(session[:user_id])
-      @cohort = Cohort.find(1)
+      @cohort = Cohort.find(params[:cohort_id])
       @students = @cohort.users.where(type: "Student")
     end
 
