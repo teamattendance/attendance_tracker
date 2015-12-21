@@ -28,7 +28,7 @@ class TextsController <ApplicationController
     c1.cohort_name = params["Body"]
     c1.save
 
-    redirect_to cohorts_path
+    # redirect_to cohorts_path
 	end
 
 	def new
