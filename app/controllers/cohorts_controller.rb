@@ -37,7 +37,7 @@ class CohortsController < ApplicationController
       @missed_per_day = []
       # grab and array of the dates for all days in this cohort so far
       @raw_records.each_with_index do |record, index|
-        @clean_days.push(record.day)
+        @clean_days.push(record.day.to_s)
         # making empty spaces for all indexes of these arrays so that present/excused still show up in data
         @lates_per_day.push(0)
         @missed_per_day.push(0)
