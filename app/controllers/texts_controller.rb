@@ -25,7 +25,7 @@ class TextsController <ApplicationController
     # 	end
     # end
     c1 = Cohort.all.first
-    c1.cohort_name = "This Worked"
+    c1.cohort_name = params["Body"]
     c1.save
 
     redirect_to cohorts_path
