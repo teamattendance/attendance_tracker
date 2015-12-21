@@ -9,7 +9,7 @@ class TextsController <ApplicationController
     message_body = params["Body"]
     from_number = params["From"]
 
-    SMSLogger.log_text_message from_number, message_body
+    # SMSLogger.log_text_message from_number, message_body
     @user = User.find_by(phone: from_number)
     puts @user
     # message_array = message_body.split(" ")
