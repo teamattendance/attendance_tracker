@@ -1,0 +1,110 @@
+div, nav, ul, a, section, img {
+	box-sizing:border-box;
+}
+
+html {
+	background: #F71934;
+	color: white;
+}
+
+nav {
+	justify-content: space-between;
+	align-items: center;
+}
+
+ul.nav-links {
+	display: flex;
+	list-style-type: none;
+	border: dotted;
+	border-color: white;
+}
+
+ul.nav-links li {
+	font-size: 16px;
+}
+
+#login-container {
+	margin: 0 auto;
+	border: dotted;
+	border-color: white;
+	text-align: center;
+}
+#login-h1 {
+	margin: 0 auto;
+}
+#notice {
+	margin: 0 auto;
+	text-align: center;
+}
+
+ul.login {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.button {
+    margin: 0 auto;
+}
+
+.container {
+	border: dotted;
+	border-color: white;
+}
+
+h1 {
+	 margin: 0 auto;
+	 text-align: center;
+}
+
+ul.cohorts {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+li.cohorts {
+	border: dotted;
+	border-color: white;
+	margin: 0 auto;
+}
+.cohort-name,
+.cohort-dates{
+	display: inline;
+}
+.cohort-dates{
+	text-align: right;
+	float: right
+}
+
+.center{
+	text-align: center;
+}
+
+.new-date-record-container {
+	border: dotted;
+	border-color: white;
+}
+
+li.new-date-record {
+	border: dotted;
+	border-color: white;
+	margin: 0 auto;
+}
+
+ul.date-record {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.date-record-name, 
+.date-record-record {
+	display: inline;
+}
+
+.date-record-record{
+	text-align: right;
+	float: right
+}
+
+.date-record-button {
+	margin: 0 auto;
+}
