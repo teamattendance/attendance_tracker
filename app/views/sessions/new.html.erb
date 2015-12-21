@@ -1,8 +1,11 @@
+<% content_for :css do %> 
+	<%= stylesheet_link_tag 'login' %>
+<% end %>
 
 <div id="login-container" class="grid-4-8 ">
 	<h1 id="login-h1" >Log In</h1>
 
-	<p id="notice"><%= notice %></p>
+	<p id="logout-notice"><%= notice %></p>
 
 	<div id="login-form-container">
 		<ul class="login"><%= form_for "/" do |f| %>
@@ -10,7 +13,7 @@
 			<%=f.text_field :email, class: "grid-2-8"%>
 			<%=f.label :password, class: "grid-2-8"%>
 			<%=f.password_field :password, class: "grid-2-8"%>
-			<%=f.submit "Sign In", class: "button grid-2-8" %>
+			<%=f.submit "Sign In", class: "login-button grid-2-8" %>
 		</ul>
 		<%end%>
 	</div>
