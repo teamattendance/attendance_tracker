@@ -58,17 +58,6 @@
   <% end %>
 </ul>
 
-<div >
-  Total Missed: <%=@total_missed%>
-  <div id="missed-per-day"><%= @missed_per_day %> </div>
-</div>
-<div>
-  Total Lates: <%=@total_lates.to_json%>
-  <div id="lates-per-day"><%= @lates_per_day %> </div>
-</div>
-<div>
-  <div id="clean-days"><%= @clean_days %> </div>
-</div>
 <script>
   var misses = <%= @missed_per_day %>
   var lates = <%= @lates_per_day %>
