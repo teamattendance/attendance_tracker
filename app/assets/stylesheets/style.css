@@ -2,27 +2,6 @@ div, nav, ul, a, section, img {
 	box-sizing:border-box;
 }
 
-html {
-	background: #F71934;
-	color: white;
-}
-
-nav {
-	justify-content: space-between;
-	align-items: center;
-}
-
-ul.nav-links {
-	display: flex;
-	list-style-type: none;
-	border: dotted;
-	border-color: white;
-}
-
-ul.nav-links li {
-	font-size: 16px;
-}
-
 #login-container {
 	margin: 0 auto;
 	border: dotted;
@@ -32,11 +11,11 @@ ul.nav-links li {
 #login-h1 {
 	margin: 0 auto;
 }
-#notice {
+/*#notice {
 	margin: 0 auto;
 	text-align: center;
 }
-
+*/
 ul.login {
 	list-style-type: none;
 	padding-left: 0;
