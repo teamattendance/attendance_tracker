@@ -36,7 +36,7 @@ class CohortsController < ApplicationController
       @lates_per_day = []
       @missed_per_day = []
       # grab and array of the dates for all days in this cohort so far
-      @raw_records.each_with_index do |record, index|
+      @raw_records.each do |record|
         @clean_days.push(record.day.to_s)
         # making empty spaces for all indexes of these arrays so that present/excused still show up in data
         @lates_per_day.push(0)
@@ -46,10 +46,12 @@ class CohortsController < ApplicationController
       @students.each do |student|
         # goes through each of this student's date records, index should match the index for this day in @clean_days
         student.date_records.each_with_index do |record, index|
-          if record.attendence == "late"
-            @lates_per_day[index] = @lates_per_day[index] 
-          elsif record.attendence == "unexcused"
-            @missed_per_day[index] = @missed_per_day[index] 
+          if record.day >= @cohort.start_date && record.day <= @cohort.end_date 
+            if record.attendence == "late"
+              @lates_per_day[index] = @lates_per_day[index] + 1 
+            elsif record.attendence == "unexcused"
+              @missed_per_day[index] = @missed_per_day[index] + 1
+            end
           end
         end
       end
