@@ -58,16 +58,6 @@
   <% end %>
 </ul>
 
-<p>
-  <%@students.each do |student|%>
-    <%student.date_records.each do |record|%>
-      <%=record.attendence%>
-    <%end%>
-  <%end%>
-</p>
-<p><%=@lates_per_day%></p>
-<p><%=@missed_per_day%></p>
-
 <script>
   var misses = <%= @missed_per_day %>
   var lates = <%= @lates_per_day %>
