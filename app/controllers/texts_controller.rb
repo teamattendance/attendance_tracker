@@ -1,5 +1,6 @@
 class TextsController <ApplicationController
 	before_action :authorize
+	skip_before_action :verify_authenticity_token, only: [:index]
 	# https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
 	def index
 		# let's pretend that we've mapped this action to 
