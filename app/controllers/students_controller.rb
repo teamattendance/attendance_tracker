@@ -47,12 +47,8 @@ class StudentsController < ApplicationController
 		end
 		@cohort = Cohort.find(params[:cohort_id])
 		@cohort.users.push(@student)
-		respond_to do |format|
-			if @student
-				StudentMailer.welcome_email(@student, @cohort, @password).deliver
-				format.html {redirect_to cohort_students_path}
-			end
-		end
+		StudentMailer.welcome_email(@student, @cohort, @password).deliver_now
+		redirect_to cohort_students_path
 	end
 
  private

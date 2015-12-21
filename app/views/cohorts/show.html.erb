@@ -1,4 +1,6 @@
-<script src="Chart.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script type="text/javascript" src="/main.js"></script>
 
 <p id="notice"><%= notice %></p>
 <h1><%= @cohort.cohort_name %></h1>
@@ -55,19 +57,16 @@
     </li>
   <% end %>
 </ul>
-<div >
-  Total Missed: <%=@total_missed%>
-  <%= @missed_per_day %>
-</div>
-<div>
-  Total Lates: <%=@total_lates%>
-  <%= @lates_per_day %>
-</div>
-<div>
-  <%= @clean_days %>
-</div>
+
+<script>
+  var misses = <%= @missed_per_day %>
+  var lates = <%= @lates_per_day %>
+  var days = <%= raw @clean_days %>
+</script>
 <%@total_missed = 0 %>
 <%@total_lates = 0 %>
+
+<canvas id="myChart" width="400" height="400"></canvas>
 
 
 <h3>See date record from a specific day</h3>
