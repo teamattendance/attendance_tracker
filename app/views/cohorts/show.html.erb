@@ -1,3 +1,5 @@
+<script src="Chart.js"></script>
+
 <p id="notice"><%= notice %></p>
 <h1><%= @cohort.cohort_name %></h1>
 <p>Start Date: <%= @cohort.start_date.strftime("%m/%d/%Y") %></p>
@@ -55,9 +57,14 @@
 </ul>
 <div >
   Total Missed: <%=@total_missed%>
+  <%= @missed_per_day %>
 </div>
 <div>
   Total Lates: <%=@total_lates%>
+  <%= @lates_per_day %>
+</div>
+<div>
+  <%= @clean_days %>
 </div>
 <%@total_missed = 0 %>
 <%@total_lates = 0 %>
