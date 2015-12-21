@@ -9,6 +9,11 @@ class TextsController <ApplicationController
     from_number = params["From"]
 
     SMSLogger.log_text_message from_number, message_body
+
+    # @params = params
+
+    redirect_to "/cohorts?body=#{params["Body"]}"
+    # render :index
 	end
 
 	def new
