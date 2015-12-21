@@ -1,5 +1,5 @@
 class TextsController <ApplicationController
-	# before_action :authorize
+	# before_action :authorize, only: [:new, :create]
 	skip_before_action :verify_authenticity_token
 
 
@@ -15,7 +15,7 @@ class TextsController <ApplicationController
 
     # SMSLogger.log_text_message from_number, message_body
     @user = User.find_by(phone: from_number)
-    puts @user
+    puts @user["first_name"]
     # message_array = message_body.split(" ")
     # message_array.each do |mess|
     # 	if mess.start_with?("sick")
@@ -24,7 +24,10 @@ class TextsController <ApplicationController
     # 		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "late"
     # 	end
     # end
-    Cohort.first.cohort_name = "This Worked"
+    c1 = Cohort.all.first
+    c1.cohort_name = "This Worked"
+    c1.save
+
     redirect_to cohorts_path
 	end
 
