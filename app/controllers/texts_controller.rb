@@ -29,7 +29,6 @@ class TextsController <ApplicationController
 	    :body => params[:body]
 	  )
 	  redirect_to "/cohorts"
-
 	end
 
 end

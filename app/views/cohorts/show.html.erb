@@ -1,7 +1,9 @@
+<script src="Chart.js"></script>
+
 <p id="notice"><%= notice %></p>
 <h1><%= @cohort.cohort_name %></h1>
-<p>Start Date: <%= @cohort.start_date.strftime("%b %m, %Y") %></p>
-<p>End Date: <%= @cohort.end_date %></p>
+<p>Start Date: <%= @cohort.start_date.strftime("%m/%d/%Y") %></p>
+<p>End Date: <%= @cohort.end_date.strftime("%m/%d/%Y") %></p>
 <p>Subject: <%= @cohort.subject %></p>
 <p>Full Time: <%= @cohort.full_time %></p>
 <p>Max Absences: <%= @cohort.max_absences %></p>
@@ -34,8 +36,10 @@
           <% if record.day >= @cohort.start_date && record.day <= @cohort.end_date  %>
             <%if record.attendence == "unexcused" %>
               <% @missed = @missed+1 %>
+              <%@total_missed = @total_missed+1 %>
             <%elsif record.attendence == "late"%>
               <% @lates = @lates+1 %>
+              <%@total_lates = @total_lates+1 %>
             <%end%>
           <%end%>
         <%end%>
@@ -51,18 +55,32 @@
     </li>
   <% end %>
 </ul>
+<div >
+  Total Missed: <%=@total_missed%>
+  <%= @missed_per_day %>
+</div>
+<div>
+  Total Lates: <%=@total_lates%>
+  <%= @lates_per_day %>
+</div>
+<div>
+  <%= @clean_days %>
+</div>
+<%@total_missed = 0 %>
+<%@total_lates = 0 %>
+
 
 <h3>See date record from a specific day</h3>
 
 <form method="GET" action="/cohorts/<%=@cohort.id%>/date_records">
-  <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>">
+  <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>" value= "<%=@cohort.start_date%>">
   <input type="submit">
 </form> 
 
 <% if @user.type == "Instructor" %>
   <h3>Create new date record</h3>
   <form method="GET" action="/cohorts/<%=params[:id]%>/students/date_records/new">
-    <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>">
+    <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=Time.now.to_s.split(' ').shift%>">
     <input type="submit">
   </form> 
 <% end %>
