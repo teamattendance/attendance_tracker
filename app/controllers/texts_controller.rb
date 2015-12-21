@@ -1,13 +1,15 @@
 class TextsController <ApplicationController
 	before_action :authorize
-	skip_before_action :verify_authenticity_token, only: [:index]
-	protect_from_forgery with: :null_session
+	# skip_before_action :verify_authenticity_token, only: [:index]
+	# protect_from_forgery with: :null_session
 
 
 	# https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
 	def index
 		# let's pretend that we've mapped this action to 
     # http://localhost:3000/sms in the routes.rb file
+
+    puts params["Body"]
     
     message_body = params["Body"]
     from_number = params["From"]
