@@ -10,14 +10,16 @@ class TextsController <ApplicationController
 
     SMSLogger.log_text_message from_number, message_body
     @user = User.find_by(phone: from_number)
-    message_array = message_body.split(" ")
-    message_array.each do |mess|
-    	if mess.start_with?("sick")
-    		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "excused"
-    	elsif mess.start_with?("late")
-    		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "late"
-    	end
-    end
+    # message_array = message_body.split(" ")
+    # message_array.each do |mess|
+    # 	if mess.start_with?("sick")
+    # 		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "excused"
+    # 	elsif mess.start_with?("late")
+    # 		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "late"
+    # 	end
+    # end
+    Cohort.first.cohort_name = "This Worked"
+    redirect_to cohorts_path
 	end
 
 	def new
