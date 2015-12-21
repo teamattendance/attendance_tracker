@@ -5,11 +5,12 @@ Rails.application.routes.draw do
  
   resources :users , only: [:edit, :show, :update]
   resources :date_records, only: [:edit, :update]
+  resources :texts, only: [:index]
  
 
   shallow do
     resources :students, only: [:show] do
-       resources :texts, only: [:index,:new,:create]
+       resources :texts, only: [:new,:create]
     end
   end
 
