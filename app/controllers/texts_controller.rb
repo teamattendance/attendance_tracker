@@ -21,10 +21,8 @@ class TextsController <ApplicationController
     	if mess.start_with?("sick")
     		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first.attendence = "excused"
     	elsif mess.start_with?("late")
-    		 a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first.attendence
-    		 puts a
-    		 a = "late"
-    		 puts a
+    		 a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
+				 a.attendence = "late"
     		 a.save
     	end
     end
