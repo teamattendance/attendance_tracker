@@ -33,7 +33,7 @@ s1 = Student.create({
   })
 # working email
 s2 = Student.create({
-  email: 'salguero.meredith@gmail.com', password: 'test', password_confirmation: 'test', phone: "+4125769880", first_name: 'Mary', last_name: 'Salsbury' 
+  email: 'salguero.meredith@gmail.com', password: 'test', password_confirmation: 'test', phone: "+14125769880", first_name: 'Mary', last_name: 'Salsbury' 
   })
 # NOT working email
 s3 = Student.create({

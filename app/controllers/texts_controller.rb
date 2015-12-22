@@ -15,10 +15,8 @@ class TextsController <ApplicationController
     from_number = params["From"]
 
     # SMSLogger.log_text_message from_number, message_body
-    users=User.all
-    users.each {|user|  puts user.phone}
-    # @user = User.find_by(phone: from_number)
-    # puts @user.first_name
+    @user = User.find_by(phone: from_number)
+    puts @user.first_name
     # message_array = message_body.split(" ")
     # message_array.each do |mess|
     # 	if mess.start_with?("sick")
@@ -27,9 +25,6 @@ class TextsController <ApplicationController
     # 		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "late"
     # 	end
     # end
-    c1 = Cohort.all.first
-    c1.cohort_name = params["Body"]
-    c1.save
 
     redirect_to "/"
 	end
