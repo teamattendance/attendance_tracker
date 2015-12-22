@@ -9,15 +9,15 @@
     <%=User.find(@student.id).cohorts.first.cohort_name%>
   <%end%>
 </h1>
-	<ul>
+	<ul class="student-show grid-4-8">
 		<% @student.date_records.each do |record| %>
 			<% if record.day >= Cohort.find(params[:cohort_id]).start_date && record.day <= Cohort.find(params[:cohort_id]).end_date  %>
         <li>
-          <div>Date: <%= record["day"] %></div>
-  			  <div>Attendance: <%= record["attendence"] %></div>
+          <div class="student-record-name grid-2-8">Date: <%= record["day"] %></div>
+  			  <div class="student-record-record grid-2-8">Attendance: <%= record["attendence"] %></div>
     			<% if @current_user.type == "Instructor"%> 
-    			 <a href = "/date_records/<%=record.id%>/edit">Edit Attendance</a>
-    			<%end%>
+    			 <a class="instructor-view" href = "/date_records/<%=record.id%>/edit">Edit Attendance</a>
+          <%end%>
         </li>
       <%end%>
 		<% end %>
