@@ -3,11 +3,6 @@
 	text-align: center;
 }
 
-.cohorts-container {
-	border: dotted;
-	border-color: white;
-}
-
 h1.cohorts {
 	 margin: 0 auto;
 	 text-align: center;
@@ -19,8 +14,6 @@ ul.cohorts {
 }
 
 li.cohorts {
-	border: dotted;
-	border-color: white;
 	margin: 0 auto;
 }
 .cohort-name,
