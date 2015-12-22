@@ -21,7 +21,7 @@ class TextsController <ApplicationController
     	if mess.start_with?("sick")
     		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "excused"
     	elsif mess.start_with?("late")
-    		puts @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date)
+    		puts @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "late"
     	end
     end
 
