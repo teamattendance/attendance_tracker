@@ -1,0 +1,22 @@
+*{
+  margin: 0 auto;
+}
+.total-cohort-info{
+  text-align: center;
+}
+.cohort{
+  font-size: 120%
+}
+h1.cohort.name{
+  font-size: 300%;
+}
+p.cohort{
+  display: inline-block;
+}
+.whole-shebang{
+  display: flex;
+}
+ul{
+  list-style-type: none;
+  padding: 0;
+}
