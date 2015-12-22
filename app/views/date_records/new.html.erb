@@ -1,4 +1,6 @@
-
+<% content_for :css do %> 
+  <%= stylesheet_link_tag 'new-date-record' %>
+<% end %>
 <div class="new-date-record-container grid-full">
   <h1>New Date Record: <%=params[:date]%></h1>
     <ul class="date-record">
