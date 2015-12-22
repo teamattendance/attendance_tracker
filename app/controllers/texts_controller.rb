@@ -15,8 +15,8 @@ class TextsController <ApplicationController
     from_number = params["From"]
 
     # SMSLogger.log_text_message from_number, message_body
-    @user = User.find_by(phone: "+14125769880")
-    puts @user
+    @user = User.find_by({phone: "+14125769880"})
+    puts @user.phone
     # message_array = message_body.split(" ")
     # message_array.each do |mess|
     # 	if mess.start_with?("sick")
