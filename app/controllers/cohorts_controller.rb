@@ -17,6 +17,7 @@ class CohortsController < ApplicationController
       redirect_to "/students/#{session[:user_id]}?cohort_id=#{params[:id]}"
     end
     @cohort = Cohort.find(params[:id])
+
     if @cohort.users.include? @user
       @students = @cohort.users.where(type:"Student")
       @instructors = @cohort.users.where(type:"Instructor")
@@ -29,32 +30,31 @@ class CohortsController < ApplicationController
       @lates = 0
 
       if @students.first
-        if @students.first.date_records
-          # data mining!!!
-          # all students should have the same amount of date records for each cohort, just choosing an arbitrary student
-          @raw_records = @students.first.date_records
-          @clean_days = []
-          # total missed and late for each day
-          @lates_per_day = []
-          @missed_per_day = []
-          # grab and array of the dates for all days in this cohort so far
-          @raw_records.each do |record|
+        @raw_records = @students.first.date_records
+        @clean_days = []
+        # total missed and late for each day
+        @lates_per_day = []
+        @missed_per_day = []
+        # grab and array of the dates for all days in this cohort so far
+        @raw_records.each do |record|
+          # makes sure that this is only add days from cohort correct date_records
+          if record.day >= @cohort.start_date && record.day <= @cohort.end_date
             @clean_days.push(record.day.to_s)
             # making empty spaces for all indexes of these arrays so that present/excused still show up in data
             @lates_per_day.push(0)
             @missed_per_day.push(0)
           end
-          # going through each student to grab missed and lates from their daterecords on each day
-          @students.each do |student|
-            # goes through each of this student's date records, index should match the index for this day in @clean_days
-            student.date_records.each_with_index do |record, index|
-              if record.day >= @cohort.start_date && record.day <= @cohort.end_date 
-                if record.attendence == "late"
-                  @lates_per_day[index] = @lates_per_day[index] + 1 
-                elsif record.attendence == "unexcused"
-                  @missed_per_day[index] = @missed_per_day[index] + 1
-                end
-              end
+        end
+        # going through each student to grab missed and lates from their daterecords on each day
+        @students.each do |student|
+          # goes through each of this student's date records, index should match the index for this day in @clean_days
+          @clean_days.each_with_index do |that_day, index|
+            presense = DateRecord.where(day: that_day).find_by(student_id: student.id).attendence
+
+            if presense == "late"
+              @lates_per_day[index] = @lates_per_day[index] + 1 
+            elsif presense == "unexcused"
+              @missed_per_day[index] = @missed_per_day[index] + 1
             end
           end
         end

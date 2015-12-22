@@ -15,8 +15,16 @@ p.cohort{
 }
 .whole-shebang{
   display: flex;
+  background: rgba(255,255,255, 0.9);
+  padding: 10px;
 }
 ul{
   list-style-type: none;
-  padding: 0;
+  padding: 10px;
+  line-height: 2;
+}
+.danger-zone{
+  font-size: 10px;
+  background: rgba(255,80,80, 0.8);
+  padding-left: 10px;
 }
