@@ -1,12 +1,20 @@
+<% content_for :css do %> 
+	<%= stylesheet_link_tag 'login' %>
+<% end %>
 
-<h1>Log In</h1>
+<div id="login-container" class="grid-4-8 ">
+	<h1 id="login-h1" >Log In</h1>
 
-<p id="notice"><%= notice %></p>
+	<p id="logout-notice"><%= notice %></p>
 
-<%= form_for "/" do |f| %>
-	<%=f.label :email%>
-	<%=f.text_field :email%>
-	<%=f.label :password%>
-	<%=f.password_field :password%>
-	<%=f.submit "Sign In"%>
-<%end%>
+	<div id="login-form-container">
+		<ul class="login"><%= form_for "/" do |f| %>
+			<%=f.label :email, class: "grid-2-8"%>
+			<%=f.text_field :email, class: "grid-2-8"%>
+			<%=f.label :password, class: "grid-2-8"%>
+			<%=f.password_field :password, class: "grid-2-8"%>
+			<%=f.submit "Sign In", class: "login-button grid-2-8" %>
+		</ul>
+		<%end%>
+	</div>
+</div>

@@ -1,16 +1,27 @@
-<p id="notice"><%= notice %></p>
-<h1>These are your cohorts</h1>
-<ul>
-  <% @cohorts.each do |cohort| %>
-    <li> 
-      <a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a> 
-      <div>
-        <%=cohort.start_date.strftime("%b %m")%> - <%=cohort.end_date%>
-      </div>
-    </li>
-
-  <% end %>
-</ul>
-<% if @user.type == "Instructor" %>
-  <a href="/cohorts/new">New Cohort</a>
+<% content_for :css do %> 
+	<%= stylesheet_link_tag 'cohorts-index' %>
 <% end %>
+<p id="cohorts-notice"><%= notice %></p>
+
+<div class="cohorts-container">
+	<div class="grid-full">
+		<h1 class="cohorts grid-3-8">These are your cohorts:</h1>
+		<ul class="cohorts">
+		  <% @cohorts.each do |cohort| %>
+		    <li class="cohorts grid-5-8"> 
+		      <div class="grid-5-8 cohort-name">
+		      	<a href="/cohorts/<%= cohort.id %>/students"><%= cohort.cohort_name %> </a>
+		      </div> 
+		      <div class="grid-3-8 cohort-dates">
+		        <%=cohort.start_date.strftime("%b %m")%> - <%=cohort.end_date%>
+		      </div>
+		    </li>
+		  <% end %>
+		</ul>
+		<% if @user.type == "Instructor" %>
+			<div class="new-cohorts-link">
+		 		<a href="/cohorts/new">New Cohort</a>
+		  	</div>
+		<% end %>
+	</div>
+</div>

@@ -1,10 +1,13 @@
-<h1><%=@student.first_name%>'s Attendance Stats for Cohort 
+<% content_for :css do %> 
+  <%= stylesheet_link_tag 'students-show.css' %>
+<% end %>
+
+<h1 class="cohort-welcome"><%=@student.first_name%>'s Attendance Stats for Cohort 
   <% if @current_user.type != "Student"%> 
     <a href="/cohorts/<%=params[:cohort_id]%>/students"><%=Cohort.find(params[:cohort_id]).cohort_name%></a>
   <%else%>
     <%=User.find(@student.id).cohorts.first.cohort_name%>
   <%end%>
-  :
 </h1>
 	<ul>
 		<% @student.date_records.each do |record| %>

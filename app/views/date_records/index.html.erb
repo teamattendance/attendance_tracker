@@ -1,15 +1,18 @@
-<h1>Attendence Record for Cohort 
-  <a href="/cohorts/<%=@cohort.id%>/students"><%=@cohort.cohort_name%></a>
-  on <%=params[:date]%></h1>
-<ul>
-  <% @students.each do |student| %>
-    <li>
-      <a href="/students/<%= student.id %>?cohort_id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
-      <div>
-        <div>
-          <p><%= student.date_records.where(day: params[:date]).first.attendence %></p>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<% content_for :css do %> 
+  <%= stylesheet_link_tag 'date-record-index' %>
+<% end %>
+<div class="date-record-container">
+  <div class="grid-full">
+    <h1 class="date-record grid-6-8">Attendence Record for Cohort 
+      <a href="/cohorts/<%=@cohort.id%>/students"><%=@cohort.cohort_name%></a>
+      on <%=params[:date]%></h1>
+    <ul class="date-record grid-3-8">
+      <% @students.each do |student| %>
+      <li class="grid-full">
+          <a class="date-record-name grid-1-8" href="/students/<%= student.id %>?cohort_id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
+          <p class="date-record-record grid-1-8"><%= student.date_records.where(day: params[:date]).first.attendence %></p>
+      </li>
+      <% end %> 
+    </ul> 
+  </div>
+</div>

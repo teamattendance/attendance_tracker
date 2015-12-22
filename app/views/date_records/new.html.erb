@@ -1,26 +1,30 @@
-<h1>New day <%=params[:date]%></h1>
-
-<ul>
-  <%= form_tag("/cohorts/#{@cohort_id}/students/date_records", method: :post) do %>
-    <% @students.each do |student| %>
-      <!--  -->
-      <li>
-        <div>
-          <%= student.first_name %> <%= student.last_name %>
-        </div>
-        <div>
-          <!-- hidden input tag with params[:date] set so we can access in create method -->
-          <input type="hidden" name="date" value="<%= params[:date] %> ">
-          <select name="<%= student.id.to_s %>" >
-            <option value="present">Present</option>
-            <option value="excused">Excused</option>
-            <option value="unexcused">Unexcused</option>
-            <option value="late">Late</option>
-          </select>
+<% content_for :css do %> 
+  <%= stylesheet_link_tag 'date-record-new' %>
+<% end %>
+<div class="new-date-record-container grid-full">
+  <h1>New Date Record: <%=params[:date]%></h1>
+    <ul class="date-record">
+      <%= form_tag("/cohorts/#{@cohort_id}/students/date_records", method: :post) do %>
+        <% @students.each do |student| %>
           <!--  -->
-        </div>
-      </li>
-    <%end%>
-    <button>Submit</button>
-  <%end%>
-</ul>
+          <li class="new-date-record grid-3-8">
+            <div class="date-record-name grid-5-8">
+              <%= student.first_name %> <%= student.last_name %>
+            </div>
+            <div class="date-record-record grid-5-8">
+              <!-- hidden input tag with params[:date] set so we can access in create method -->
+              <input type="hidden" name="date" value="<%= params[:date] %> ">
+              <select name="<%= student.id.to_s %>" >
+                <option value="present">Present</option>
+                <option value="excused">Excused</option>
+                <option value="unexcused">Unexcused</option>
+                <option value="late">Late</option>
+              </select>
+              <!--  -->
+            </div>
+          </li>
+        <%end%>
+        <button class="date-record-button">Submit</button>
+      <%end%>
+    </ul>
+</div>

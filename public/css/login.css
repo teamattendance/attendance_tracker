@@ -1,0 +1,24 @@
+#login-container {
+	margin: 0 auto;
+	border: dotted;
+	border-color: white;
+	text-align: center;
+}
+#login-h1 {
+	margin: 0 auto;
+}
+
+#logout-notice {
+	margin: 0 auto;
+	text-align: center;
+}
+
+ul.login {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.login-button {
+    margin: 0 auto;
+}
+
