@@ -14,7 +14,7 @@
 			<% if record.day >= Cohort.find(params[:cohort_id]).start_date && record.day <= Cohort.find(params[:cohort_id]).end_date  %>
         <li>
           <div class="student-record-name grid-2-8">Date: <%= record["day"] %></div>
-  			  <div class="student-record-record grid-2-8">Attendance: <%= record["attendence"] %></div>
+  			  <div class="student-record-record grid-2-8"><%= record["attendence"] %></div>
     			<% if @current_user.type == "Instructor"%> 
     			 <a class="instructor-view" href = "/date_records/<%=record.id%>/edit">Edit Attendance</a>
           <%end%>
@@ -24,10 +24,10 @@
     <!-- changes missed and lates into a common variable  -->
     <%@missed = @missed*4 +@lates%>
     <%if @missed >= (Cohort.find(params[:cohort_id]).max_absences-1) *4%>
-      <p>! Contact!!!</p>
+      <p class="danger-zone">In Danger of Not Meeting Graduation Requirements!</p>
       <!-- add API -->
       <% if @current_user.type == "Student"%>
-        <p> Your producer:</p>
+        <p> Contact Your Producer:</p>
         <a href="/"> <%= Cohort.find(params[:cohort_id]).users.where(type: "Producer").first.email%> </a>
       <%end%>
     <%end%>
