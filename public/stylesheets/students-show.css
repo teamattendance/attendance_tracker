@@ -1,3 +1,22 @@
 .cohort-welcome{
   color: red;
+  margin: 0 auto;
+  text-align: center;
 }
+
+ul.student-show {
+  margin: 0 auto;
+  text-align: center;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.student-record-name, 
+.student-record-record {
+	display: inline;
+}
+
+.student-record-record{
+	text-align: right;
+}
+
