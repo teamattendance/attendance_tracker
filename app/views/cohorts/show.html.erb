@@ -1,87 +1,99 @@
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-<script type="text/javascript" src="/main.js"></script>
-
+<% content_for :css do %> 
+  <%= stylesheet_link_tag 'cohorts-show.css' %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  <script type="text/javascript" src="/main.js"></script>
+<% end %>
 <p id="notice"><%= notice %></p>
-<h1><%= @cohort.cohort_name %></h1>
-<p>Start Date: <%= @cohort.start_date.strftime("%m/%d/%Y") %></p>
-<p>End Date: <%= @cohort.end_date.strftime("%m/%d/%Y") %></p>
-<p>Subject: <%= @cohort.subject %></p>
-<p>Full Time: <%= @cohort.full_time %></p>
-<p>Max Absences: <%= @cohort.max_absences %></p>
-<button><a href="/cohorts/<%=@cohort.id%>/edit">Edit</a></button>
-</p>
-
-<h2> Producer: </h2>
-<ul>
-  <% @producers.each do |producer| %>
-    <li> <%= producer.first_name %> <%= producer.last_name %> </li>
-  <% end %>
-</ul>
-<h2> Instructors: </h2>
-<ul>
-  <% @instructors.each do |instructor|  %>
-    <li> <%= instructor.first_name %> <%= instructor.last_name %> </li>
-  <% end %>
-</ul>
-<h2> Students: </h2>
-<% if @user.type == "Instructor" %>
-  <a href="/cohorts/<%=@cohort.id%>/students/new">Add Student</a>
-<% end %>
-<ul>
-  <% @students.each do |student| %>
-    <li>
-      <a href="/students/<%= student.id %>?cohort_id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a> 
-      <div>
-        <p><% student.date_records%></p>
-        <% student.date_records.each do |record| %>
-          <% if record.day >= @cohort.start_date && record.day <= @cohort.end_date  %>
-            <%if record.attendence == "unexcused" %>
-              <% @missed = @missed+1 %>
-              <%@total_missed = @total_missed+1 %>
-            <%elsif record.attendence == "late"%>
-              <% @lates = @lates+1 %>
-              <%@total_lates = @total_lates+1 %>
-            <%end%>
-          <%end%>
-        <%end%>
-        <p>Missed<%=@missed%></p>
-        <p>Tardies<%=@lates%></p>
-        <%@missed = @missed*4 +@lates%>  
-        <%if @missed >= 4*(@cohort.max_absences-1)%>
-          <a href="/students/<%=student.id%>/texts/new?cohort_id=<%=@cohort.id%>">Send Text</a>
-        <%end%>
-        <%@missed = 0%>
-        <%@lates = 0%>
+<div class="total-cohort-info grid-5-8">
+  <h1 class="cohort name"><%= @cohort.cohort_name %></h1>
+  <div class="cohort-details">
+    <p class="cohort date start">Start Date: <%= @cohort.start_date.strftime("%m/%d/%Y") %></p>
+    <p class="cohort date end">End Date: <%= @cohort.end_date.strftime("%m/%d/%Y") %></p>
+    <p class="cohort subject">Subject: <%= @cohort.subject %></p>
+    <p class="cohort full-time">Full Time: <%= @cohort.full_time %></p>
+    <p class="cohort max">Max Absences: <%= @cohort.max_absences %></p>
+  </div>
+  <button class= "cohort button"><a href="/cohorts/<%=@cohort.id%>/edit">Edit</a></button>
+</div>
+<div class="whole-shebang">
+  <div class="user-list grid-4-8">
+    <div class="producers-instructors">
+      <h2 class="producer header"> Producer: </h2>
+      <ul class="producer list">
+        <% @producers.each do |producer| %>
+          <li class="producer name"> <%= producer.first_name %> <%= producer.last_name %> </li>
+        <% end %>
+      </ul>
+      <h2 class="instructor header"> Instructors: </h2>
+      <ul class="instructor list">
+        <% @instructors.each do |instructor|  %>
+          <li class="instructor name"> <%= instructor.first_name %> <%= instructor.last_name %> </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="students-list">
+      <h2 class="student header"> Students: </h2>
+      <% if @user.type == "Instructor" %>
+        <a href="/cohorts/<%=@cohort.id%>/students/new"><button class="add-student">Add Student</button></a>
+      <% end %>
+      <ul>
+        <% @students.each do |student| %>
+          <li="student-container">
+            <p class="student name"> <a href="/students/<%= student.id %>?cohort_id=<%=@cohort.id%>"> <%= student.first_name %> <%= student.last_name %></a></p>
+            <div class="date-container">
+            <!-- logic for dates -->
+              <% student.date_records.each do |record| %>
+                <% if record.day >= @cohort.start_date && record.day <= @cohort.end_date  %>
+                  <%if record.attendence == "unexcused" %>
+                    <% @missed = @missed+1 %>
+                    <%@total_missed = @total_missed+1 %>
+                  <%elsif record.attendence == "late"%>
+                    <% @lates = @lates+1 %>
+                    <%@total_lates = @total_lates+1 %>
+                  <%end%>
+                <%end%>
+              <%end%>
+              <p>Missed: <%=@missed%> Tardies: <%=@lates%></p>
+              <%@missed = @missed*4 +@lates%>  
+              <%if @missed >= 4*(@cohort.max_absences-1)%>
+                <a href="/students/<%=student.id%>/texts/new?cohort_id=<%=@cohort.id%>"><button class="contact-student">Send Text</button></a>
+              <%end%>
+              <%@missed = 0%>
+              <%@lates = 0%>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <script>
+    var misses = <%= @missed_per_day %>
+    var lates = <%= @lates_per_day %>
+    var days = <%= raw @clean_days %>
+  </script>
+  <%@total_missed = 0 %>
+  <%@total_lates = 0 %>
+  <div class="right-side grid-4-8">
+    <div class="line-chart">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="date-container">
+      <h3 class="date find header">See date record from a specific day</h3>
+      <div class="find-date">
+        <form method="GET" action="/cohorts/<%=@cohort.id%>/date_records">
+          <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>" value= "<%=@cohort.start_date%>">
+          <input type="submit">
+        </form> 
       </div>
-    </li>
-  <% end %>
-</ul>
-
-<script>
-  var misses = <%= @missed_per_day %>
-  var lates = <%= @lates_per_day %>
-  var days = <%= raw @clean_days %>
-</script>
-<%@total_missed = 0 %>
-<%@total_lates = 0 %>
-
-<canvas id="myChart" width="400" height="400"></canvas>
-
-
-<h3>See date record from a specific day</h3>
-
-<form method="GET" action="/cohorts/<%=@cohort.id%>/date_records">
-  <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=@cohort.end_date%>" value= "<%=@cohort.start_date%>">
-  <input type="submit">
-</form> 
-
-<% if @user.type == "Instructor" %>
-  <h3>Create new date record</h3>
-  <form method="GET" action="/cohorts/<%=params[:id]%>/students/date_records/new">
-    <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=Time.now.to_s.split(' ').shift%>">
-    <input type="submit">
-  </form> 
-<% end %>
-
+    <% if @user.type == "Instructor" %>
+      <div class="create-date">
+        <h3 class="date create header">Create new date record</h3>
+        <form method="GET" action="/cohorts/<%=params[:id]%>/students/date_records/new">
+          <input name="date" type="date" min="<%=@cohort.start_date%>" max="<%=Time.now.to_s.split(' ').shift%>">
+          <input type="submit">
+        </form>
+      </div> 
+    <% end %>
+  </div>
+</div>
 
