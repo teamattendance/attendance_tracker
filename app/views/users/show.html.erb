@@ -1,16 +1,16 @@
 <% content_for :css do %> 
-	<%= stylesheet_link_tag 'cohorts-index' %>
+	<%= stylesheet_link_tag 'users-show.css' %>
 <% end %>
+	<h1><%=@user.first_name%> <%=@user.last_name%>'s Profile</h1>
+	<h3>Bio:</h3>
+	<p><%=@user.bio%></p>
+	<h4>Phone Number: <%=@user.phone%><h4>
+	<h4>E-mail: <%=@user.email%></h4>
+	<img class="profile-pic" src="<%=@user.img_url%>">
 
-<h1><%=@user.first_name%> <%=@user.last_name%>'s Profile</h1>
-<h3>Bio:</h3>
-<p><%=@user.bio%></p>
-<h4>Phone Number: <%=@user.phone%><h4>
-<h4>E-mail: <%=@user.email%></h4>
-<img src="<%=@user.img_url%>">
 
 <%if @current_user.id == @user.id%>
-<a href="<%=@user.id%>/edit">Edit My Profile</a>
+<a href="<%=@user.id%>/edit"><button>Edit My Profile</button></a>
 <%end%>
 
 
