@@ -16,7 +16,6 @@ class TextsController <ApplicationController
 
     # SMSLogger.log_text_message from_number, message_body
     @user = User.find_by({phone: from_number})
-    if @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
 	    message_array = message_body.split(" ")
 	    message_array.each do |mess|
 	    	mess.downcase
@@ -30,7 +29,6 @@ class TextsController <ApplicationController
 	    		 a.save
 	    	end
 	    end
-	  end
 
     redirect_to "/"
 	end
