@@ -1,23 +1,35 @@
 class TextsController <ApplicationController
-	before_action :authorize
+	# before_action :authorize, only: [:new, :create]
+	skip_before_action :verify_authenticity_token
+
+
 	# https://www.twilio.com/blog/2012/02/adding-twilio-sms-messaging-to-your-rails-app.html
 	def index
 		# let's pretend that we've mapped this action to 
     # http://localhost:3000/sms in the routes.rb file
+
+    puts params["Body"]
+    puts params["From"]
     
     message_body = params["Body"]
     from_number = params["From"]
 
-    SMSLogger.log_text_message from_number, message_body
-    @user = User.find_by(phone: from_number)
-    message_array = message_body.split(" ")
-    message_array.each do |mess|
-    	if mess.start_with?("sick")
-    		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "excused"
-    	elsif mess.start_with?("late")
-    		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).attendence = "late"
-    	end
-    end
+    # SMSLogger.log_text_message from_number, message_body
+    @user = User.find_by({phone: from_number})
+	    message_array = message_body.split(" ")
+	    message_array.each do |mess|
+	    	if mess.start_with?("sick")
+	    		a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
+	    		a.attendence = "excused"
+	    		a.save
+	    	elsif mess.start_with?("late")
+	    		 a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
+					 a.attendence = "late"
+	    		 a.save
+	    	end
+	    end
+
+    redirect_to "/"
 	end
 
 	def new
