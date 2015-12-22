@@ -18,7 +18,6 @@ class TextsController <ApplicationController
     @user = User.find_by({phone: from_number})
 	    message_array = message_body.split(" ")
 	    message_array.each do |mess|
-	    	mess.downcase
 	    	if mess.start_with?("sick")
 	    		a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
 	    		a.attendence = "excused"
