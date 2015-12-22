@@ -1,7 +1,7 @@
 <h1>Hello <%=@user.first_name%></h1>
 <p>You have signed up for <%=@cohort.cohort_name%>.</p>
 <%if @password%>
-	<p>Please sign in using the following login information:</p>
+	<p>Please <a href="https://floating-mesa-1461.herokuapp.com/">sign in</a> using the following login information:</p>
 	<p>Email: <%=@user.email%></p>
 	<p>Password: <%=@password%></p>
 <%else%>
