@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require grid
- *= require style
  *= require header
  *= require general
  */
