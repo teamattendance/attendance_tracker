@@ -41,13 +41,17 @@ class StudentsController < ApplicationController
 		email_array = students.map {|student| student.email}
 		if email_array.include? params['student'][:email]
 			@student = Student.find_by(email: params['student'][:email])
+      @cohort = Cohort.find(params[:cohort_id])
+      @cohort.users.push(@student)
+      StudentMailer.welcome_email(@student, @cohort, 0).deliver_now
 		else
 			@student = Student.create(student_params)
 			@student.update({password: @password, password_confirmation: @password})
+      @cohort = Cohort.find(params[:cohort_id])
+      @cohort.users.push(@student)
+      StudentMailer.welcome_email(@student, @cohort, @password).deliver_now
 		end
-		@cohort = Cohort.find(params[:cohort_id])
-		@cohort.users.push(@student)
-		StudentMailer.welcome_email(@student, @cohort, @password).deliver_now
+    
 		redirect_to cohort_students_path
 	end
 
