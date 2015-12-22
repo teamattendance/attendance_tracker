@@ -19,7 +19,9 @@ class TextsController <ApplicationController
     message_array = message_body.split(" ")
     message_array.each do |mess|
     	if mess.start_with?("sick")
-    		@user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first.attendence = "excused"
+    		a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
+    		a.attendence = "excused"
+    		a.save
     	elsif mess.start_with?("late")
     		 a = @user.date_records.where(day: Time.now.to_s.split(" ")[0].to_date).first
 				 a.attendence = "late"
