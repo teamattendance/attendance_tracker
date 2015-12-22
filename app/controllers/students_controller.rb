@@ -39,7 +39,6 @@ class StudentsController < ApplicationController
 		students = Student.all
 		@password = ["ajax","apple","cohort", "bash"].sample
 		email_array = students.map {|student| student.email}
-    binding.pry
 		if email_array.include? params['student'][:email]
 			@student = Student.find_by(email: params['student'][:email])
       @cohort = Cohort.find(params[:cohort_id])
