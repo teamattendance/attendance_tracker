@@ -1,0 +1,29 @@
+.new-date-record-container {
+	border: dotted;
+	border-color: white;
+}
+
+li.new-date-record {
+	border: dotted;
+	border-color: white;
+	margin: 0 auto;
+}
+
+ul.date-record {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.date-record-name, 
+.date-record-record {
+	display: inline;
+}
+
+.date-record-record{
+	text-align: right;
+	float: right
+}
+
+.date-record-button {
+	margin: 0 auto;
+}

@@ -1,0 +1,28 @@
+.date-record-container {
+	border: dotted;
+	border-color: red;
+}
+
+h1.date-record {
+	font-size: 20px;
+	margin: 0 auto;
+}
+
+ul.date-record {
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0 auto;
+}
+
+.date-record-name, 
+.date-record-record {
+	display: inline;
+}
+
+.date-record-record{
+	text-align: right;
+	float: right
+}
+p{
+	margin: 0 auto;
+}

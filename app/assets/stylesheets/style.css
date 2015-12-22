@@ -11,7 +11,7 @@ div, nav, ul, a, section, img {
 #login-h1 {
 	margin: 0 auto;
 }*/
-/*#notice {
+/*#cohorts-notice {
 	margin: 0 auto;
 	text-align: center;
 }
@@ -25,17 +25,17 @@ div, nav, ul, a, section, img {
     margin: 0 auto;
 }*/
 
-.container {
+/*.container {
 	border: dotted;
 	border-color: white;
 }
 
-h1 {
+h1.cohorts {
 	 margin: 0 auto;
 	 text-align: center;
-}
+}*/
 
-ul.cohorts {
+/*ul.cohorts {
 	list-style-type: none;
 	padding-left: 0;
 }
@@ -54,11 +54,12 @@ li.cohorts {
 	float: right
 }
 
-.center{
+.new-cohorts-link{
 	text-align: center;
 }
+*/
 
-.new-date-record-container {
+/*.new-date-record-container {
 	border: dotted;
 	border-color: white;
 }
@@ -86,4 +87,4 @@ ul.date-record {
 
 .date-record-button {
 	margin: 0 auto;
-}
+}*/

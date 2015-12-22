@@ -1,0 +1,37 @@
+#cohorts-notice {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.cohorts-container {
+	border: dotted;
+	border-color: white;
+}
+
+h1.cohorts {
+	 margin: 0 auto;
+	 text-align: center;
+}
+
+ul.cohorts {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+li.cohorts {
+	border: dotted;
+	border-color: white;
+	margin: 0 auto;
+}
+.cohort-name,
+.cohort-dates{
+	display: inline;
+}
+.cohort-dates{
+	text-align: right;
+	float: right
+}
+
+.new-cohorts-link{
+	text-align: center;
+}
